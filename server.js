@@ -27,8 +27,8 @@ mongoose.connect(
 );
 
 //functions for routes imported here, should update with routes folder
-app.use(require("./api-routes"));
-app.use(require("./html-routes"));
+// app.use(require("./api-routes"));
+// app.use(require("./html-routes"));
 
 app.listen(PORT, () => {
   console.log(`App running on port ${PORT}!`);
