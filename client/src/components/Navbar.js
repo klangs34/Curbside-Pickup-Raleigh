@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from 'react-router-dom';
 
 //styling stuff here
 
@@ -6,8 +7,10 @@ import React from "react";
 function Navbar() {
   return (
     <nav className="navbar">
-      <a href="/">Home</a>
-      <a href="/restaurants">Restaurants</a>
+      <Link to="/">Home</Link>
+      <Link to="/sign-up">Sign Up</Link>
+      <Link to="/sign-in">Sign In</Link>
+      <Link to="/restaurants">Restaurants</Link>
     </nav>
   );
 }
