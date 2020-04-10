@@ -28,6 +28,8 @@ let restaurantSeed = [
         close: 9
       }
     ],
+    lat: 35.7865683,
+    lng: -78.64702,
     menu: [
       {
         web_url: "https://www.vidrioraleigh.com/vidrios-hearth-baked-pizzas/"
@@ -52,6 +54,8 @@ let restaurantSeed = [
         close: 8.5 //8:30
       }
     ],
+    lat: 35.8041712,
+    lng: -78.6329439,
     menu: [
       {
         instagram: "@neuseriverbrewingco"
