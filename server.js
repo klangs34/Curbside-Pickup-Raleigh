@@ -40,6 +40,22 @@ app.use(function (req, res, next) {
   next();
 });
 
+// error handler middleware
+app.use(function(err, req, res, next) {
+  // set locals, only providing error in development
+  res.locals.message = err.message;
+  res.locals.error = req.app.get('env') === 'development' ? err : {};
+
+  // render the error page
+  res.status(err.status || 500).json({
+    error:
+    {
+      message: err.message || "Oops!  Something went wrong!"
+    }
+  });
+  //res.render(err.message);
+});
+
 app.listen(PORT, () => {
   console.log(`App running on port ${PORT}!`);
 });
