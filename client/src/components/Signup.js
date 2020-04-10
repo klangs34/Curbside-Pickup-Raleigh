@@ -8,7 +8,7 @@ const SignUp = () => {
   const handleSignup = e => {
     e.preventDefault();
     axios.post('/api/signup', {email, password})
-      .then(data => console.log(data));
+      .then(data => localStorage.setItem('jwtToken', data.data.token));
   }
 
   return (

@@ -1,7 +1,8 @@
 const express = require("express");
 const logger = require("morgan");
 const mongoose = require("mongoose");
-const middleWare = require("./middleware");
+var exphbs = require("express-handlebars");
+const cors = require('cors');
 
 const PORT = process.env.PORT || 8080;
 
@@ -15,9 +16,11 @@ mongoose.connect(
 
 const app = express();
 
+app.use(cors());
 app.use(logger("dev"));
 
 const apiRoutes = require("./routes/api");
+const htmlRoutes = require("./routes/html-routes");
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
@@ -31,13 +34,19 @@ if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
 }
 
+app.engine("handlebars", exphbs({ defaultLayout: "main" }));
+app.set("view engine", "handlebars");
+
 //functions for routes imported here, should update with routes folder
+app.use('/', htmlRoutes)
 app.use("/api", apiRoutes);
 
-app.use(function (req, res, next) {
-  //res.locals.login = req.isAuthenticated();
-  res.locals.session = req.session;
-  next();
+// catch 404 and forward to error handler
+app.use(function(req, res, next) {
+  let err = new Error("Not Found");
+  error.status = 404;
+  next(err);
+  //next(createError(404));
 });
 
 // error handler middleware

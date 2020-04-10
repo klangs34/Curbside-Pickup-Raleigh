@@ -1,13 +1,21 @@
-POST http://localhost:3000/api/signup
+POST http://localhost:8080/api/login
 Content-Type: application/json
 
 {
-    "email": "test@test.com",
-    "password": "test123"
+    "email": "testing123@test.com",
+    "password": "testing123"
+}
+
+###
+POST http://localhost:8080/api/signup
+Content-Type: application/json
+
+{
+    "email": "testing123@test.com",
+    "password": "testing123"
 }
 
 ###
 
-GET http://localhost:3000/api/user-profile HTTP/1.1
-
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZTkwN2EwOGQyNjRiNzFmOTg2ZmM3NDUiLCJlbWFpbCI6InRlc3RAdGVzdC5jb20iLCJpYXQiOjE1ODY1MjY3Mjh9.yfO7YHSqZV3TbE1WX48VAMX11iqnxL8c8p_CJTtJyYg
+GET http://localhost:8080/user-profile HTTP/1.1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZTkwODMzZTIxYjIxODJjYjhkY2VmOGMiLCJlbWFpbCI6InRlc3RpbmcxMjNAdGVzdC5jb20iLCJpYXQiOjE1ODY1NDYxNDh9.dp9LK1f5cH7cg_wMmDYHzM4T-4IBDS6HzzyT49dgIeI

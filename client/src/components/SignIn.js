@@ -8,7 +8,9 @@ const SignIn = () => {
   const handleSignin = e => {
     e.preventDefault();
     axios.post('/api/login', {email, password})
-      .then(data => console.log(data));
+      .then(data => {
+        localStorage.setItem('jwtToken', data.data.token)
+      });
   }
   return (
   <div className="container">

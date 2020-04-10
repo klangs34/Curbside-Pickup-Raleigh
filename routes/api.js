@@ -2,8 +2,6 @@ require("dotenv").config();
 const express = require("express");
 const Router = express.Router();
 const jwt = require("jsonwebtoken");
-const middleWare = require("../middleware");
-const path = require("path");
 
 const db = require("../models");
 
@@ -84,11 +82,6 @@ Router.post("/signup", async (req, res, next) => {
           message: error.message
         })
       }
-});
-
-//view route
-Router.get("/user-profile", middleWare.authenticateToken, (req, res) => {
-  res.sendFile(path.join(__dirname, "../client/public/profile.html"));
 });
 
 module.exports = Router;
