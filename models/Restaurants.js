@@ -8,6 +8,12 @@ const RestaurantSchema = new Schema({
   },
   address: [
     {
+      lat: {
+        type: Number,
+      },
+      lng: {
+        type: Number,
+      },
       street: {
         type: String,
       },
@@ -19,6 +25,18 @@ const RestaurantSchema = new Schema({
         type: Number,
       },
       phone: {
+        type: String,
+      },
+      instagram: {
+        type: String,
+      },
+      web_url: {
+        type: String,
+      },
+      online: {
+        type: String,
+      },
+      menu_url: {
         type: String,
       },
     },
@@ -37,16 +55,32 @@ const RestaurantSchema = new Schema({
         type: Number,
       },
     },
-  ],
-  menu: [
     {
-      web_url: { type: String },
-      instagram: { type: String },
-      facebook: { type: String },
+      days: {
+        type: String,
+      },
+      open: {
+        type: Number,
+      },
+      close: {
+        type: Number,
+      },
+    },
+    {
+      days: {
+        type: String,
+      },
+      open: {
+        type: Number,
+      },
+      close: {
+        type: Number,
+      },
     },
   ],
+  order: { type: String },
   category: { type: String },
-  //how to make a choice: food, alcohol, food and alcohol
+  //how to make a choice: food, alcohol, food and alcohol - limited by dropdown on the front end, maybe a way to control with a "list" on backend?
 });
 
 //define data types more clearly - like for answers in fitness app?
