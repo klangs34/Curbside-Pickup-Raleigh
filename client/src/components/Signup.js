@@ -1,14 +1,17 @@
 import React, { useState } from "react";
 import axios from 'axios';
 
-const SignUp = () => {
+const SignUp = ({setIsLoggedToTrue}) => {
   const [email, setEmail ] = useState("");
   const [password, setPassword ] = useState("");
 
   const handleSignup = e => {
     e.preventDefault();
     axios.post('/api/signup', {email, password})
-      .then(data => localStorage.setItem('jwtToken', data.data.token));
+      .then(data => {
+        localStorage.setItem('jwtToken', data.data.token);
+        setIsLoggedToTrue();
+      });
   }
 
   return (

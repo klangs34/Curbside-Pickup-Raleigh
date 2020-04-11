@@ -1,7 +1,6 @@
 const express = require("express");
 const logger = require("morgan");
 const mongoose = require("mongoose");
-var exphbs = require("express-handlebars");
 const cors = require('cors');
 
 const PORT = process.env.PORT || 8080;
@@ -34,9 +33,6 @@ if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
 }
 
-app.engine("handlebars", exphbs({ defaultLayout: "main" }));
-app.set("view engine", "handlebars");
-
 //functions for routes imported here, should update with routes folder
 app.use('/', htmlRoutes)
 app.use("/api", apiRoutes);
@@ -55,14 +51,13 @@ app.use(function(err, req, res, next) {
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
 
-  // render the error page
+  // render the error message
   res.status(err.status || 500).json({
     error:
     {
       message: err.message || "Oops!  Something went wrong!"
     }
   });
-  //res.render(err.message);
 });
 
 app.listen(PORT, () => {
