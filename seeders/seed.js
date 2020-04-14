@@ -89,7 +89,7 @@ let restaurantSeed = [
   },
   {
     name: "Crawford and Son",
-    address: [
+    contact: [
       {
         lat: 35.788879,
         lng: -78.634087,
@@ -114,7 +114,7 @@ let restaurantSeed = [
   },
   {
     name: "Jose and Sons",
-    address: [
+    contact: [
       {
         lat: 35.7753230,
         lng: -78.6447053,
@@ -149,7 +149,7 @@ let restaurantSeed = [
   },
   {
     name: "The Pit",
-    address: [
+    contact: [
       {
         lat: ,
         lng: -,
@@ -174,7 +174,7 @@ let restaurantSeed = [
   },
   {
     name: "Waraji",
-    address: [
+    contact: [
       {
         lat: 35.8585483,
         lng: -78.7117476,
@@ -198,7 +198,7 @@ let restaurantSeed = [
   },
   {
     name: "Randy's Pizza",
-    address: [
+    contact: [
       {
         lat: ,
         lng: -,
@@ -228,7 +228,7 @@ let restaurantSeed = [
   },
   {
     name: "Salsa Fresh",
-    address: [
+    contact: [
       {
         lat: ,
         lng: -,
