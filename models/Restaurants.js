@@ -6,7 +6,7 @@ const RestaurantSchema = new Schema({
     type: String,
     unique: true,
   },
-  address: [
+  contact: [
     {
       lat: {
         type: Number,
