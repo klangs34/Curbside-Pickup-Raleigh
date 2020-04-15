@@ -7,20 +7,20 @@ import Filter from "./Filter";
 class Home extends React.Component {
   state = {
     search: "",
-    results: []
+    results: [],
   };
 
   //need a search function for data entered into the form field
 
-  handleInputChange = event => {
+  handleInputChange = (event) => {
     const name = event.target.name;
     const value = event.target.value;
     this.setState({
-      [name]: value
+      [name]: value,
     });
   };
 
-  handleFormSubmit = event => {
+  handleFormSubmit = (event) => {
     event.preventDefault();
     // this.searchGiphy(this.state.search);
   };
@@ -29,12 +29,12 @@ class Home extends React.Component {
     return (
       <>
         <div className="container">
-          <div class="jumbotron jumbotron-fluid bg-info">
-            <div class="container">
-              <h1 class="display-4 text-center">
+          <div className="jumbotron jumbotron-fluid bg-info">
+            <div className="container">
+              <h1 className="display-4 text-center">
                 Restaurant Pick-up Raleigh Area
               </h1>
-              <p class="lead  text-center">
+              <p className="lead  text-center">
                 An up-to-date database of restaurants offering to-go and
                 delivery while under Stay At Home.
               </p>
