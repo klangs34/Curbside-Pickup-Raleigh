@@ -44,7 +44,7 @@ const MyProfile = ({isLogged}) => {
           ></textarea>
         </div>
       </form>
-      : <Link cdto="/sign-in">Please Login</Link> }
+      : <Link to="/sign-in">Please Login</Link> }
       </div>
     )
 }
