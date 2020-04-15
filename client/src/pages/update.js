@@ -17,12 +17,12 @@ function Update() {
   const catRef = useRef();
   const infoRef = useRef();
 
-  const handleSubmit = e => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    const googleAPIkey = AIzaSyD8fLnwSiZVqLnnhdDVCUPL8Bfh - Vz9i_0;
-    const place = `${addressRef.current.value}+${cityRef.current.value}+${zipRef.current.value}`
-    const restURL = `https://maps.googleapis.com/maps/api/place/textsearch/json?query=${place}&key=${googleAPIkey}`
-    Axios.get(restURL).then(data => {
+    const googleAPIkey = "AIzaSyD8fLnwSiZVqLnnhdDVCUPL8Bfh-Vz9i_0";
+    const place = `${addressRef.current.value}+${cityRef.current.value}+${zipRef.current.value}`;
+    const restURL = `https://maps.googleapis.com/maps/api/place/textsearch/json?query=${place}&key=${googleAPIkey}`;
+    Axios.get(restURL).then((data) => {
       const restaurant = {
         name: restaurantRef.current.value,
         address: [
@@ -33,25 +33,25 @@ function Update() {
             city: cityRef.current.value,
             zip: zipRef.current.value,
             phone: phoneRef.current.value,
-            web_url: urlRef.current.value
-          }
+            web_url: urlRef.current.value,
+          },
         ],
         hours: [
           {
             days: hoursRef.current.value,
             open: openRef.current.value,
-            close: closeRef.current.value
-          }
+            close: closeRef.current.value,
+          },
         ],
         order: orderRef.current.value,
-        category: catRef.current.value
+        category: catRef.current.value,
       };
 
-      Axios.post("/api/restaurant", restaurant).then(res => {
+      Axios.post("/api/restaurant", restaurant).then((res) => {
         res.json(restaurant);
-      })
-    })
-  }
+      });
+    });
+  };
 
   return (
     <form className="form-group mt-5 mb-5" onSubmit={handleSubmit}>
@@ -67,7 +67,9 @@ function Update() {
       <input required ref={catRef} placeholder="Category" />
       <input required ref={orderRef} placeholder="Order Methods" />
       <textarea ref={infoRef} placeholder="additional info" />
-      <button className="btn btn-success mt-3 mb-5" type="submit">Update Data</button>
+      <button className="btn btn-success mt-3 mb-5" type="submit">
+        Update Data
+      </button>
     </form>
-  )
+  );
 }

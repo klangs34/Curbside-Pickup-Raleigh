@@ -2,25 +2,25 @@ import React from "react";
 import RestaurantCard from "./RestaurantCard";
 import SearchBar from "./SearchBar";
 import Filter from "./Filter";
-// import MapView from "./MapView";
+import MapView from "./MapView";
 
 class Home extends React.Component {
   state = {
     search: "",
-    results: []
+    results: [],
   };
 
   //need a search function for data entered into the form field
 
-  handleInputChange = event => {
+  handleInputChange = (event) => {
     const name = event.target.name;
     const value = event.target.value;
     this.setState({
-      [name]: value
+      [name]: value,
     });
   };
 
-  handleFormSubmit = event => {
+  handleFormSubmit = (event) => {
     event.preventDefault();
     // this.searchGiphy(this.state.search);
   };
@@ -46,7 +46,7 @@ class Home extends React.Component {
             handleInputChange={this.handleInputChange}
           />
           <Filter />
-          {/* <MapView /> */}
+          <MapView />
           <RestaurantCard />
         </div>
       </>
