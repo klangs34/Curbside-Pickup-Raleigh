@@ -2,7 +2,7 @@ import React from "react";
 import RestaurantCard from "./RestaurantCard";
 import SearchBar from "./SearchBar";
 import Filter from "./Filter";
-// import MapView from "./MapView";
+import MapView from "./MapView";
 
 class Home extends React.Component {
   state = {
@@ -46,7 +46,7 @@ class Home extends React.Component {
             handleInputChange={this.handleInputChange}
           />
           <Filter />
-          {/* <MapView /> */}
+          <MapView />
           <RestaurantCard />
         </div>
       </>
