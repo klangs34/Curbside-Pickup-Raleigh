@@ -76,10 +76,10 @@ const RestaurantSchema = new Schema({
       close: {
         type: Number,
       },
-    },
+    }
   ],
   order: { type: String },
-  category: { type: String },
+  category: { type: String }
   //how to make a choice: food, alcohol, food and alcohol - limited by dropdown on the front end, maybe a way to control with a "list" on backend?
 });
 
