@@ -49,7 +49,7 @@ const SignIn = ({ setIsLoggedToTrue }) => {
           type="submit"
           className="btn btn-primary"
         >
-          Sign In
+          Sign in
         </button>
       </form>
     </div>

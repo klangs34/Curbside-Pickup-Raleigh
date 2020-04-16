@@ -6,7 +6,7 @@ import Footer from "./components/Footer";
 import Signup from "./components/Signup";
 import Signin from "./components/SignIn";
 import MyProfile from "./components/MyProfile";
-import NotFound from "./components/NotFound";
+import RestaurantList from "./components/RestaurantList";
 
 function App() {
   const [isLogged, setIsLogged] = useState(false);
@@ -39,7 +39,7 @@ function App() {
           path="/my-profile"
           component={() => <MyProfile isLogged={isLogged} />}
         />
-        <Route component={NotFound} />
+        <Route component={RestaurantList} />
       </Switch>
       <Footer />
     </div>

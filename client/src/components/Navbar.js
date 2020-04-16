@@ -11,7 +11,7 @@ function Navbar({ isLogged, setIsLoggedToFalse }) {
     <nav className="navbar">
       <Link to="/">Home</Link>
       <Link to="/restaurants">Restaurants</Link>
-      {!isLogged && <Link to="/sign-up">Sign Up</Link>}
+      {!isLogged && <Link to="/sign-up">Create Account</Link>}
       {!isLogged ? (
         <Link to="/sign-in">Sign In</Link>
       ) : (
@@ -21,7 +21,7 @@ function Navbar({ isLogged, setIsLoggedToFalse }) {
       )}
       {isLogged && (
         <Link to="/my-profile" className="nav-item">
-          My Profile
+          Restaurant Profile
         </Link>
       )}
     </nav>
