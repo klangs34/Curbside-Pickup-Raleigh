@@ -1,9 +1,12 @@
 import React from "react";
 
+
 // Depending on the current path, this component sets the "active" class on the appropriate navigation link item
 function RestaurantCard({ restaurant }) {
   return (
     <div className="card" style={{ width: "18rem" }}>
+
+
       <img
         src="https://s.hdnux.com/photos/01/11/15/51/19192385/3/gallery_xlarge.jpg"
         className="card-img-top"
@@ -20,6 +23,7 @@ function RestaurantCard({ restaurant }) {
       <div className="card-body">
         <a href="#" className="card-link">
           menu: {restaurant.category}
+
         </a>
         <br />
         <a href="#" className="btn btn-primary">

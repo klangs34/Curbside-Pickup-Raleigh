@@ -5,19 +5,35 @@ const SignUp = ({ setIsLoggedToTrue }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
+  const [displayError, setDisplayError] = useState("");
+
   const handleSignup = (e) => {
     e.preventDefault();
-    axios.post("/api/signup", { email, password }).then((data) => {
-      localStorage.setItem("jwtToken", data.data.token);
-      setIsLoggedToTrue();
-    });
+    axios
+      .post("/api/signup", { email, password })
+      .then((data) => {
+        localStorage.setItem("jwtToken", data.data.token);
+        setIsLoggedToTrue();
+      })
+      .catch((err) => {
+        console.log(err.response.data.error.message);
+        setDisplayError(err.response.data.error.message);
+      });
+
   };
 
   return (
     <div className="container">
       <form>
+
+        {displayError && (
+          <div className="alert alert-danger" role="alert">
+            {displayError}
+          </div>
+        )}
         <div className="form-group">
-          <label htmlFor="exampleInputEmail1">Email address</label>
+          <label htmlFor="exampleInputEmail1">Email Address</label>
+
           <input
             type="email"
             className="form-control"
@@ -43,6 +59,7 @@ const SignUp = ({ setIsLoggedToTrue }) => {
           className="btn btn-primary"
         >
           Create account
+
         </button>
       </form>
     </div>

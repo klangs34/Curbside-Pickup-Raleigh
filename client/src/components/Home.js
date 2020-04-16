@@ -51,7 +51,7 @@ class Home extends React.Component {
           <div className="card-body m-2">
             <div>
               <Filter />
-            </div>
+            </div>  
             <div className="align-content-stretch flex-wrap">
               <MapView />
             </div>
@@ -75,12 +75,6 @@ class Home extends React.Component {
                 .map((restaurant) => (
                   <EmployeeCard key={restaurant.id.value} restaurant={restaurant} />
                 ))}
-
-
-
-
-
-
 
           {
                   restaurants
