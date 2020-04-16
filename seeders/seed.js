@@ -151,8 +151,8 @@ let restaurantSeed = [
     name: "The Pit",
     contact: [
       {
-        lat: ,
-        lng: -,
+        lat: 35.7760104,
+        lng: -78.6447112,
         street: "328 W Davie St",
         city: "Raleigh",
         zip: 27601,
@@ -200,8 +200,8 @@ let restaurantSeed = [
     name: "Randy's Pizza",
     contact: [
       {
-        lat: ,
-        lng: -,
+        lat: 35.8805956,
+        lng: -78.84945619999999,
         street: "5311 S Miami Blvd",
         city: "Durham",
         zip: 27703,
@@ -230,8 +230,8 @@ let restaurantSeed = [
     name: "Salsa Fresh",
     contact: [
       {
-        lat: ,
-        lng: -,
+        lat: 35.90437319999999,
+        lng: 78.65626499999999,
         street: "9650 Strickland Rd",
         city: "Raleigh",
         zip: 27615,
