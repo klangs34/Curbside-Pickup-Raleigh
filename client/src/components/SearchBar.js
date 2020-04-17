@@ -12,7 +12,7 @@ function SearchBar(props) {
           value={props.search}
           name="search"
           type="text"
-          className="form-control mb-2 mx-sm-2"
+          className="form-control mx-sm-2"
           placeholder="Street, City, State"
           id="search"
         />
