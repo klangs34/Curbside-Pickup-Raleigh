@@ -1,5 +1,5 @@
 import React, { useRef } from "react";
-import Axios from "axios";
+import API from "../utils/API";
 
 function Update() {
   const validCategories = ["Food", "Alcohol", "Food and Alcohol"];
@@ -19,10 +19,9 @@ function Update() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const googleAPIkey = "AIzaSyD8fLnwSiZVqLnnhdDVCUPL8Bfh-Vz9i_0";
+
     const place = `${addressRef.current.value}+${cityRef.current.value}+${zipRef.current.value}`;
-    const restURL = `https://maps.googleapis.com/maps/api/place/textsearch/json?query=${place}&key=${googleAPIkey}`;
-    Axios.get(restURL).then((data) => {
+    API.findLocation(place).then((data) => {
       const restaurant = {
         name: restaurantRef.current.value,
         address: [
@@ -47,7 +46,7 @@ function Update() {
         category: catRef.current.value,
       };
 
-      Axios.post("/api/restaurant", restaurant).then((res) => {
+      API.saveRestaurant(restaurant).then((res) => {
         res.json(restaurant);
       });
     });

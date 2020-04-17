@@ -1,5 +1,6 @@
 import React from "react";
 import { Map, GoogleApiWrapper, Marker } from "google-maps-react";
+import { GOOGLE_API_KEY } from "../utils/keys";
 
 // function to replace center if user enters an address, code originally had initialCenter as the variable
 //test this in react-practice folder
@@ -28,15 +29,24 @@ class MapView extends React.Component {
         google={this.props.google}
         zoom={8}
         style={mapStyles}
-        initialCenter={{ lat: 35.7796, lng: -78.6382 }}
+        // initialCenter={{ lat: 35.7796, lng: -78.6382 }}
         // bounds={bounds}
+
+        initialCenter={{ lat: this.props.lat, lng: this.props.lng }}
       >
-        <Marker position={{ lat: 35.7796, lng: -78.6382 }} />
+        {this.props.restaurants.map((rest) => (
+          <Marker
+            position={{
+              lat: parseFloat(rest.address.lat),
+              lng: parseFloat(rest.address.lng),
+            }}
+          />
+        ))}
       </Map>
     );
   }
 }
 
 export default GoogleApiWrapper({
-  apiKey: "AIzaSyD8fLnwSiZVqLnnhdDVCUPL8Bfh-Vz9i_0",
+  apiKey: GOOGLE_API_KEY,
 })(MapView);
