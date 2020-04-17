@@ -2,7 +2,8 @@ import React from "react";
 
 
 // Depending on the current path, this component sets the "active" class on the appropriate navigation link item
-function RestaurantCard({ restaurant }) {
+function RestaurantCard( restaurant ) {
+  console.log(restaurant);
   return (
     <div className="card" style={{ width: "18rem" }}>
 

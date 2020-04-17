@@ -6,6 +6,35 @@ import { GOOGLE_API_KEY } from "../utils/keys";
 //test this in react-practice folder
 
 class MapView extends React.Component {
+  // console.log(retaurants)
+  // displayMarkers = () => {
+  //   this.props.restaurants.map((restaurant) => (
+  //     <Marker
+  //       key={restaurant.name.value}
+  //       restaurant={restaurant}
+  //       center={{
+  //         lat: parseFloat(restaurant.contact.lat),
+  //         lng: parseFloat(restaurant.contact.lng),
+  //       }}
+  //     />
+  //   ));
+  // };
+
+  //   return this.state.stores.map((store, index) => {
+  //     return (
+  //       <Marker
+  //         key={index}
+  //         id={index}
+  //         position={{
+  //           lat: store.latitude,
+  //           lng: store.longitude,
+  //         }}
+  //         //  onClick={() => console.log("You clicked me!")}
+  //       />
+  //     );
+  //   });
+  // };
+
   render() {
     const mapStyles = {
       width: "100%",
@@ -27,21 +56,25 @@ class MapView extends React.Component {
     return (
       <Map
         google={this.props.google}
-        zoom={8}
+        zoom={10}
         style={mapStyles}
         // initialCenter={{ lat: 35.7796, lng: -78.6382 }}
         // bounds={bounds}
 
         initialCenter={{ lat: this.props.lat, lng: this.props.lng }}
       >
-        {this.props.restaurants.map((rest) => (
+        {/* {this.props.restaurants.map((restaurant) => (
           <Marker
-            position={{
-              lat: parseFloat(rest.address.lat),
-              lng: parseFloat(rest.address.lng),
+            key={restaurant.id.value}
+            restaurant={restaurant}
+            center={{
+              lat: parseFloat(restaurant.contact.lat),
+              lng: parseFloat(restaurant.contact.lng),
             }}
           />
-        ))}
+        ))} */}
+
+        {/* {this.displayMarkers()} */}
       </Map>
     );
   }
