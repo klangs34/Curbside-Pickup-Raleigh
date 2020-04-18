@@ -11,6 +11,9 @@ class Home extends React.Component {
     lat: 35.7796,
     lng: -78.6382,
     restaurants: [],
+    // restaurants: fetch("/api/get-restaurants").then((response) => {
+    //   return response.json();
+    // }),
   };
 
   //need a search function for data entered into the form field
@@ -110,7 +113,7 @@ class Home extends React.Component {
           </div>
         </div>
 
-        <div className="card  m-2">
+        <div className="card m-2">
           <div className="card-header justify-content-center">
             <SearchBar
               search={this.state.search}

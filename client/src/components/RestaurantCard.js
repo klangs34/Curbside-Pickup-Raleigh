@@ -6,8 +6,6 @@ function RestaurantCard( restaurant ) {
   console.log(restaurant);
   return (
     <div className="card" style={{ width: "18rem" }}>
-
-
       <img
         src="https://s.hdnux.com/photos/01/11/15/51/19192385/3/gallery_xlarge.jpg"
         className="card-img-top"
