@@ -114,25 +114,13 @@ class Home extends React.Component {
           </div>
         </div>
 
-        <div className="card  m-2">
+        <div className="card m-2">
           <div className="card-header justify-content-center">
             <SearchBar
               search={this.state.search}
               handleFormSubmit={this.handleFormSubmit}
               handleInputChange={this.handleInputChange}
             />
-          </div>
-          <div className="card-body m-2">
-            <div>
-              <Filter />
-            </div>
-            <div className="align-content-stretch flex-wrap">
-              <MapView
-                lat={this.state.lat}
-                lng={this.state.lng}
-                restaurants={this.state.restaurants}
-              />
-            </div>
           </div>
         </div>
         <div className="row">
@@ -156,6 +144,18 @@ class Home extends React.Component {
                 .map((restaurant) => (
                   <RestaurantCard key={restaurant.id.value} restaurant={restaurant} />
                 ))} */}
+          </div>
+          <div className="card-body m-2">
+            <div>
+              <Filter />
+            </div>
+            <div className="align-content-stretch flex-wrap">
+              <MapView
+                lat={this.state.lat}
+                lng={this.state.lng}
+                restaurants={this.state.restaurants}
+              />
+            </div>
           </div>
         </div>
       </div>
