@@ -6,7 +6,7 @@ export default {
     return axios.get(`https://maps.googleapis.com/maps/api/place/textsearch/json?query=${address}&key=${GOOGLE_API_KEY}`)
   },
   getRestaurants: function () {
-    return axios.get("/get-restaurants");
+    return axios.get("/api/get-restaurants");
   },
   saveRestaurant: function (restaurantData) {
     return axios.post("/api/restaurant", restaurantData);
