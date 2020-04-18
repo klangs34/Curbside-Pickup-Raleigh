@@ -27,7 +27,7 @@ app.use(express.json());
 
 //use public or client build
 // app.use(express.static("public"));
-app.use(express.static("./client/public"));
+// app.use(express.static("./client/public"));
 
 if (process.env.NODE_ENV === "production") {
   //for when connected in Heroku
