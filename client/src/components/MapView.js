@@ -71,12 +71,13 @@ class MapView extends React.Component {
     return (
       <Map
         google={this.props.google}
-        zoom={13}
+        zoom={11}
         style={mapStyles}
         // initialCenter={{ lat: 35.7796, lng: -78.6382 }}
         // bounds={bounds}
 
         initialCenter={{ lat: this.props.lat, lng: this.props.lng }}
+        center={{ lat: this.props.lat, lng: this.props.lng }}
       >
         {this.props.restaurants.map((restaurant) => (
           <Marker
