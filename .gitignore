@@ -1,4 +1,4 @@
 node_modules/
 .env
-restapi.rest
+request.rest
 .gitignore
