@@ -2,11 +2,12 @@ const express = require("express");
 const logger = require("morgan");
 const mongoose = require("mongoose");
 const cors = require("cors");
+const path = require("path");
 
 const PORT = process.env.PORT || 8080;
 
 mongoose.connect(
-  process.env.MONGODB_URI || "mongodb://localhost/curbside_restaurantsdb", //needs to have the same name in 
+  process.env.MONGODB_URI || "mongodb://localhost/curbside_restaurantsdb", //needs to have the same name in
   {
     useNewUrlParser: true,
     useUnifiedTopology: true,
@@ -34,8 +35,12 @@ if (process.env.NODE_ENV === "production") {
 }
 
 //functions for routes imported here, should update with routes folder
-app.use("/", htmlRoutes);
+//app.use("/", htmlRoutes);
 app.use("/api", apiRoutes);
+
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "./client/build/index.html"));
+});
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
