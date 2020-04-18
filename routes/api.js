@@ -5,21 +5,6 @@ const jwt = require("jsonwebtoken");
 
 const db = require("../models");
 
-// router.get("/api/workouts/range", (req, res) => {
-//   workoutdb
-//     .find({})
-//     // .limit(6) //put limit here?
-//     .then(function (data) {
-//       //data is the result of the find()
-//       console.log("second"); //+ JSON.stringify(data)
-//       //loads with dashboard(two times?)
-//       res.json(data);
-//     })
-//     .catch((err) => {
-//       res.json(err);
-//     });
-// });
-
 Router.get("/get-restaurants", (req, res) => {
   db.Restaurants.find({}).then((data) => {
     console.log("get");

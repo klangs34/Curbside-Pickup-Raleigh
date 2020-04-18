@@ -5,6 +5,7 @@ import Filter from "./Filter";
 import MapView from "./MapView";
 import API from "../utils/API";
 import axios from "axios";
+// import "./style.css";
 
 class Home extends React.Component {
   state = {
@@ -12,9 +13,6 @@ class Home extends React.Component {
     lat: 35.7796,
     lng: -78.6382,
     restaurants: [],
-    // restaurants: fetch("/api/get-restaurants").then((response) => {
-    //   return response.json();
-    // }),
   };
 
   //need a search function for data entered into the form field
@@ -59,21 +57,24 @@ class Home extends React.Component {
           lat: position.coords.latitude,
           lng: position.coords.longitude,
         });
-        axios.get("/api/get-restaurants").then((data) => {
-          console.log(data);
-          this.setState({
-            restaurants: data.data.filter((rest) => {
-              return (
-                this.distance(
-                  parseFloat(this.state.lat),
-                  parseFloat(this.state.lng),
-                  parseFloat(rest.contact.lat),
-                  parseFloat(rest.contact.lng)
-                ) <= 10
-              );
-            }),
-          });
-        }).catch(err => console.log(err));
+        axios
+          .get("/api/get-restaurants")
+          .then((data) => {
+            console.log(data);
+            this.setState({
+              restaurants: data.data.filter((rest) => {
+                return (
+                  this.distance(
+                    parseFloat(this.state.lat),
+                    parseFloat(this.state.lng),
+                    parseFloat(rest.contact.lat),
+                    parseFloat(rest.contact.lng)
+                  ) <= 10
+                );
+              }),
+            });
+          })
+          .catch((err) => console.log(err));
       });
     }
   };
@@ -88,9 +89,9 @@ class Home extends React.Component {
     const a =
       Math.sin(dLat / 2) * Math.sin(dLat / 2) +
       Math.cos(rLat1) *
-      Math.cos(rLat2) *
-      Math.sin(dLng / 2) *
-      Math.sin(dLng / 2);
+        Math.cos(rLat2) *
+        Math.sin(dLng / 2) *
+        Math.sin(dLng / 2);
     const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
 
     console.log(c * R);
@@ -105,6 +106,7 @@ class Home extends React.Component {
   render() {
     return (
       <div className="container">
+        {/* jumbotron  */}
         <div className="jumbotron jumbotron-fluid bg-info">
           <div className="container">
             <h1 className="display-4 text-center">
@@ -117,7 +119,9 @@ class Home extends React.Component {
           </div>
         </div>
 
+        {/* searchbar in head, map and filter in body  */}
         <div className="card m-2">
+          {/* searchbar  */}
           <div className="card-header justify-content-center">
             <SearchBar
               search={this.state.search}
@@ -125,11 +129,16 @@ class Home extends React.Component {
               handleInputChange={this.handleInputChange}
             />
           </div>
-          <div className="card-body m-2">
+          {/* body  */}
+          <div className="card-body">
             <div>
               <Filter />
             </div>
-            <div className="align-content-stretch flex-wrap">
+            <div
+              id="map-container-google"
+              className="map-container"
+              style={{ height: "400px", width: "100%", position: "relative" }}
+            >
               <MapView
                 lat={this.state.lat}
                 lng={this.state.lng}
@@ -137,7 +146,9 @@ class Home extends React.Component {
               />
             </div>
           </div>
+          {/* closes card  */}
         </div>
+
         <div className="row">
           <div className="col-sm-6">
             <RestaurantCard
