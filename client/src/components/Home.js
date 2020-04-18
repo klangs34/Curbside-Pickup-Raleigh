@@ -4,6 +4,7 @@ import SearchBar from "./SearchBar";
 import Filter from "./Filter";
 import MapView from "./MapView";
 import API from "../utils/API";
+import axios from "axios";
 
 class Home extends React.Component {
   state = {
@@ -31,15 +32,15 @@ class Home extends React.Component {
         lat: data.data.results[0].geometry.location.lat,
         lng: data.data.results[0].geometry.location.lng,
       });
-      API.getRestaurants().then((response) => {
+      axios.get("/api/get-restaurants").then((response) => {
         this.setState({
           restaurants: response.data.filter((rest) => {
             return (
               this.distance(
                 this.state.lat,
                 this.state.lng,
-                rest.address.lat,
-                rest.address.lng
+                rest.contact.lat,
+                rest.contact.lng
               ) <= 10
             );
           }),
@@ -55,7 +56,7 @@ class Home extends React.Component {
           lat: position.coords.latitude,
           lng: position.coords.longitude,
         });
-        API.getRestaurants().then((data) => {
+        axios.get("/api/get-restaurants").then((data) => {
           console.log(data);
           this.setState({
             restaurants: data.data.filter((rest) => {
@@ -63,13 +64,13 @@ class Home extends React.Component {
                 this.distance(
                   parseFloat(this.state.lat),
                   parseFloat(this.state.lng),
-                  parseFloat(rest.address.lat),
-                  parseFloat(rest.address.lng)
+                  parseFloat(rest.contact.lat),
+                  parseFloat(rest.contact.lng)
                 ) <= 10
               );
             }),
           });
-        });
+        }).catch(err => console.log(err));
       });
     }
   };
@@ -84,10 +85,13 @@ class Home extends React.Component {
     const a =
       Math.sin(dLat / 2) * Math.sin(dLat / 2) +
       Math.cos(rLat1) *
-        Math.cos(rLat2) *
-        Math.sin(dLng / 2) *
-        Math.sin(dLng / 2);
+      Math.cos(rLat2) *
+      Math.sin(dLng / 2) *
+      Math.sin(dLng / 2);
     const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+
+    console.log(c * R);
+
     return c * R;
   };
 
@@ -131,8 +135,8 @@ class Home extends React.Component {
             </div>
           </div>
         </div>
-        <div class="row">
-          <div class="col-sm-6">
+        <div className="row">
+          <div className="col-sm-6">
             <RestaurantCard
               // key={this.state.restaurants.id.value}
               restaurants={this.state.restaurants}

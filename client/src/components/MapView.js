@@ -1,11 +1,26 @@
 import React from "react";
-import { Map, GoogleApiWrapper, Marker } from "google-maps-react";
+import { Map, GoogleApiWrapper, Marker, InfoWindow } from "google-maps-react";
 import { GOOGLE_API_KEY } from "../utils/keys";
 
 // function to replace center if user enters an address, code originally had initialCenter as the variable
 //test this in react-practice folder
 
 class MapView extends React.Component {
+
+  state = {
+    showingInfoWindow: false,
+    activeMarker: {},
+    selectedPlace: { name: "" }
+  }
+
+  onMarkerClick = (props, marker, e) => {
+    console.log(props)
+    this.setState({
+      selectedPlace: props.restaurant,
+      activeMarker: marker,
+      showingInfoWindow: true
+    });
+  }
   // console.log(retaurants)
   // displayMarkers = () => {
   //   this.props.restaurants.map((restaurant) => (
@@ -37,8 +52,8 @@ class MapView extends React.Component {
 
   render() {
     const mapStyles = {
-      width: "100%",
-      height: "100%",
+      width: "500px",
+      height: "500px",
     };
 
     // const points = [
@@ -56,24 +71,33 @@ class MapView extends React.Component {
     return (
       <Map
         google={this.props.google}
-        zoom={10}
+        zoom={13}
         style={mapStyles}
         // initialCenter={{ lat: 35.7796, lng: -78.6382 }}
         // bounds={bounds}
 
         initialCenter={{ lat: this.props.lat, lng: this.props.lng }}
       >
-        {/* {this.props.restaurants.map((restaurant) => (
+        {this.props.restaurants.map((restaurant) => (
           <Marker
-            key={restaurant.id.value}
+            key={restaurant._id}
             restaurant={restaurant}
-            center={{
+            position={{
               lat: parseFloat(restaurant.contact.lat),
               lng: parseFloat(restaurant.contact.lng),
             }}
+            onClick={this.onMarkerClick}
           />
-        ))} */}
+        ))}
 
+        <InfoWindow
+          marker={this.state.activeMarker}
+          visible={this.state.showingInfoWindow}
+        >
+          <div>
+            <h1>{this.state.selectedPlace.name}</h1>
+          </div>
+        </InfoWindow>
         {/* {this.displayMarkers()} */}
       </Map>
     );
