@@ -4,7 +4,6 @@ import SearchBar from "./SearchBar";
 import Filter from "./Filter";
 import MapView from "./MapView";
 import API from "../utils/API";
-import axios from "axios";
 
 class Home extends React.Component {
   state = {
@@ -22,6 +21,7 @@ class Home extends React.Component {
     this.setState({
       [name]: value,
     });
+    console.log(this.state);
   };
 
   handleFormSubmit = (event) => {
@@ -32,21 +32,10 @@ class Home extends React.Component {
         lat: data.data.results[0].geometry.location.lat,
         lng: data.data.results[0].geometry.location.lng,
       });
-      axios.get("/api/get-restaurants").then((response) => {
-        this.setState({
-          restaurants: response.data.filter((rest) => {
-            return (
-              this.distance(
-                this.state.lat,
-                this.state.lng,
-                rest.contact.lat,
-                rest.contact.lng
-              ) <= 10
-            );
-          }),
-        });
-      });
-    });
+      API.getRestaurants().then((response) => {
+        this.filterRest(response.data);
+      }).catch(err => console.log(err));
+    }).catch(err => console.log(err));
   };
 
   componentDidMount = () => {
@@ -56,24 +45,32 @@ class Home extends React.Component {
           lat: position.coords.latitude,
           lng: position.coords.longitude,
         });
-        axios.get("/api/get-restaurants").then((data) => {
+        API.getRestaurants().then((data) => {
           console.log(data);
-          this.setState({
-            restaurants: data.data.filter((rest) => {
-              return (
-                this.distance(
-                  parseFloat(this.state.lat),
-                  parseFloat(this.state.lng),
-                  parseFloat(rest.contact.lat),
-                  parseFloat(rest.contact.lng)
-                ) <= 10
-              );
-            }),
-          });
+          this.filterRest(data.data)
+        }).catch(err => console.log(err));
+      }, () => {
+        API.getRestaurants().then(data => {
+          this.filterRest(data.data);
         }).catch(err => console.log(err));
       });
     }
   };
+
+  filterRest = restaurants => {
+    this.setState({
+      restaurants: restaurants.filter((rest) => {
+        return (
+          this.distance(
+            parseFloat(this.state.lat),
+            parseFloat(this.state.lng),
+            parseFloat(rest.contact.lat),
+            parseFloat(rest.contact.lng)
+          ) <= 10
+        );
+      }),
+    });
+  }
 
   distance = (lat1, lng1, lat2, lng2) => {
     const R = 3958;
@@ -136,7 +133,7 @@ class Home extends React.Component {
           </div>
         </div>
         <div className="row">
-          <div className="col-sm-6">
+          {/* <div className="col-sm-6">
             <RestaurantCard
               // key={this.state.restaurants.id.value}
               restaurants={this.state.restaurants}
@@ -155,8 +152,8 @@ class Home extends React.Component {
                 .slice(0, 5)
                 .map((restaurant) => (
                   <RestaurantCard key={restaurant.id.value} restaurant={restaurant} />
-                ))} */}
-          </div>
+                ))} 
+          </div> */}
         </div>
       </div>
     );
