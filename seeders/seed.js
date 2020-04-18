@@ -13,17 +13,15 @@ mongoose.connect(
 let restaurantSeed = [
   {
     name: "Vidrio",
-    contact: [
-      {
-        lat: 35.7865683,
-        lng: -78.64702,
-        street: "500 Glenwood Ave #100",
-        city: "Raleigh",
-        zip: 27603,
-        phone: "919-803-6033",
-        web_url: "https://www.vidrioraleigh.com/vidrios-hearth-baked-pizzas/",
-      },
-    ],
+    contact: {
+      lat: 35.7865683,
+      lng: -78.64702,
+      street: "500 Glenwood Ave #100",
+      city: "Raleigh",
+      zip: 27603,
+      phone: "919-803-6033",
+      web_url: "https://www.vidrioraleigh.com/vidrios-hearth-baked-pizzas/",
+    },
     hours: [
       {
         days: "Daily",
@@ -36,17 +34,15 @@ let restaurantSeed = [
   },
   {
     name: "Neuse River Brewery & Brasserie",
-    contact: [
-      {
-        lat: 35.8041712,
-        lng: -78.6329439,
-        street: "518 Pershing Rd",
-        city: "Raleigh",
-        zip: 27608,
-        phone: "984-232-8479",
-        instagram: "@neuseriverbrewingco",
-      },
-    ],
+    contact: {
+      lat: 35.8041712,
+      lng: -78.6329439,
+      street: "518 Pershing Rd",
+      city: "Raleigh",
+      zip: 27608,
+      phone: "984-232-8479",
+      instagram: "@neuseriverbrewingco",
+    },
     hours: [
       {
         days: "W-F",
@@ -64,19 +60,17 @@ let restaurantSeed = [
   },
   {
     name: "Beach Shack Bottles & Taps",
-    contact: [
-      {
-        lat: 35.9111225,
-        lng: -78.6816839,
-        street: "6300 Creedmoor Road #130",
-        city: "Raleigh",
-        zip: 27615,
-        phone: "919-307-1964",
-        instagram: "@beachshackbottlestaps",
-        web_url: "http://www.beachshackbottlesandtaps.com/",
-        online: "beachshackbottlesandtaps.square.site",
-      },
-    ],
+    contact: {
+      lat: 35.9111225,
+      lng: -78.6816839,
+      street: "6300 Creedmoor Road #130",
+      city: "Raleigh",
+      zip: 27615,
+      phone: "919-307-1964",
+      instagram: "@beachshackbottlestaps",
+      web_url: "http://www.beachshackbottlesandtaps.com/",
+      online: "beachshackbottlesandtaps.square.site",
+    },
     hours: [
       {
         days: "Daily",
@@ -89,20 +83,18 @@ let restaurantSeed = [
   },
   {
     name: "Crawford and Son",
-    contact: [
-      {
-        lat: 35.788879,
-        lng: -78.634087,
-        street: "618 N Person St",
-        city: "Raleigh",
-        zip: 27604,
-        phone: "919-307-4647",
-        instagram: "@crawfordnson",
-        web_url: "http://www.crawfordandsonrestaurant.com/",
-        menu_url:
-          "http://www.crawfordandsonrestaurant.com/wp-content/uploads/2020/04/Curbside-Menu-7.pdf",
-      },
-    ],
+    contact: {
+      lat: 35.788879,
+      lng: -78.634087,
+      street: "618 N Person St",
+      city: "Raleigh",
+      zip: 27604,
+      phone: "919-307-4647",
+      instagram: "@crawfordnson",
+      web_url: "http://www.crawfordandsonrestaurant.com/",
+      menu_url:
+        "http://www.crawfordandsonrestaurant.com/wp-content/uploads/2020/04/Curbside-Menu-7.pdf",
+    },
     hours: [
       {
         days: "Tues-Sat",
@@ -115,20 +107,18 @@ let restaurantSeed = [
   },
   {
     name: "Jose and Sons",
-    contact: [
-      {
-        lat: 35.775323,
-        lng: -78.6447053,
-        street: "327 W Davie St #102",
-        city: "Raleigh",
-        zip: 27601,
-        phone: "919-775-0556",
-        instagram: "@joseandsons",
-        web_url: "https://www.joseandsons.com/",
-        online:
-          "https://www.joseandsons.com/online-ordering/jose-and-sons/menu",
-      },
-    ],
+    contact: {
+      lat: 35.775323,
+      lng: -78.6447053,
+      street: "327 W Davie St #102",
+      city: "Raleigh",
+      zip: 27601,
+      phone: "919-775-0556",
+      instagram: "@joseandsons",
+      web_url: "https://www.joseandsons.com/",
+      online:
+        "https://www.joseandsons.com/online-ordering/jose-and-sons/menu",
+    },
     hours: [
       {
         days: "T-F",
@@ -151,19 +141,17 @@ let restaurantSeed = [
   },
   {
     name: "The Pit",
-    contact: [
-      {
-        lat: "",
-        lng: "",
-        street: "328 W Davie St",
-        city: "Raleigh",
-        zip: 27601,
-        phone: "919-890-4500",
-        web_url: "https://www.thepit-raleigh.com/",
-        online: "https://www.thepit-raleigh.com/order-online/",
-        menu_url: "https://www.thepit-raleigh.com/order-online/",
-      },
-    ],
+    contact: {
+      lat: 35.7760104,
+      lng: -78.6447112,
+      street: "328 W Davie St",
+      city: "Raleigh",
+      zip: 27601,
+      phone: "919-890-4500",
+      web_url: "https://www.thepit-raleigh.com/",
+      online: "https://www.thepit-raleigh.com/order-online/",
+      menu_url: "https://www.thepit-raleigh.com/order-online/",
+    },
     hours: [
       {
         days: "Daily",
@@ -176,18 +164,16 @@ let restaurantSeed = [
   },
   {
     name: "Waraji",
-    contact: [
-      {
-        lat: 35.8585483,
-        lng: -78.7117476,
-        street: "5910 Duraleigh Road",
-        city: "Raleigh",
-        zip: 27612,
-        phone: "919-783-1883",
-        instagram: "@warajisushi",
-        web_url: "https://www.warajijapaneserestaurant.com/",
-      },
-    ],
+    contact: {
+      lat: 35.8585483,
+      lng: -78.7117476,
+      street: "5910 Duraleigh Road",
+      city: "Raleigh",
+      zip: 27612,
+      phone: "919-783-1883",
+      instagram: "@warajisushi",
+      web_url: "https://www.warajijapaneserestaurant.com/",
+    },
     hours: [
       {
         days: "",
@@ -200,19 +186,17 @@ let restaurantSeed = [
   },
   {
     name: "Randy's Pizza",
-    contact: [
-      {
-        lat: "",
-        lng: "",
-        street: "5311 S Miami Blvd",
-        city: "Durham",
-        zip: 27703,
-        phone: "919-941-7755",
-        instagram: "@trianglerandyspizza",
-        web_url: "http://randys-pizza.com/",
-        online: "https://orderonline.granburyrs.com/slice/menu/main",
-      },
-    ],
+    contact: {
+      lat: 35.8805956,
+      lng: -78.84945619999999,
+      street: "5311 S Miami Blvd",
+      city: "Durham",
+      zip: 27703,
+      phone: "919-941-7755",
+      instagram: "@trianglerandyspizza",
+      web_url: "http://randys-pizza.com/",
+      online: "https://orderonline.granburyrs.com/slice/menu/main",
+    },
     hours: [
       {
         days: "M-Sat",
@@ -230,21 +214,19 @@ let restaurantSeed = [
   },
   {
     name: "Salsa Fresh",
-    contact: [
-      {
-        lat: "",
-        lng: "",
-        street: "9650 Strickland Rd",
-        city: "Raleigh",
-        zip: 27615,
-        phone: "919-870-1107",
-        web_url: "http://www.salsafreshgrill.com/",
-        online:
-          "https://www.doordash.com/store/salsa-fresh-mexican-grill-raleigh-208499/en-US?utm_campaign=208499&utm_content=red-small&utm_medium=website&utm_source=partner-link",
-        menu_url:
-          "http://www.salsafreshgrill.com/salsa-fresh-mexican-grill-menu",
-      },
-    ],
+    contact: {
+      lat: 35.90437319999999,
+      lng: -78.65626499999999,
+      street: "9650 Strickland Rd",
+      city: "Raleigh",
+      zip: 27615,
+      phone: "919-870-1107",
+      web_url: "http://www.salsafreshgrill.com/",
+      online:
+        "https://www.doordash.com/store/salsa-fresh-mexican-grill-raleigh-208499/en-US?utm_campaign=208499&utm_content=red-small&utm_medium=website&utm_source=partner-link",
+      menu_url:
+        "http://www.salsafreshgrill.com/salsa-fresh-mexican-grill-menu",
+    },
     hours: [
       {
         days: "Daily",

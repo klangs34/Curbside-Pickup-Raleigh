@@ -4,6 +4,7 @@ import axios from "axios";
 const SignUp = ({ setIsLoggedToTrue }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
   const [displayError, setDisplayError] = useState("");
 
   const handleSignup = (e) => {
@@ -18,11 +19,13 @@ const SignUp = ({ setIsLoggedToTrue }) => {
         console.log(err.response.data.error.message);
         setDisplayError(err.response.data.error.message);
       });
+
   };
 
   return (
     <div className="container">
       <form>
+
         {displayError && (
           <div className="alert alert-danger" role="alert">
             {displayError}
@@ -30,6 +33,7 @@ const SignUp = ({ setIsLoggedToTrue }) => {
         )}
         <div className="form-group">
           <label htmlFor="exampleInputEmail1">Email Address</label>
+
           <input
             type="email"
             className="form-control"
@@ -54,7 +58,8 @@ const SignUp = ({ setIsLoggedToTrue }) => {
           type="submit"
           className="btn btn-primary"
         >
-          Sign Up
+          Create account
+
         </button>
       </form>
     </div>

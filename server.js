@@ -6,7 +6,7 @@ const cors = require("cors");
 const PORT = process.env.PORT || 8080;
 
 mongoose.connect(
-  process.env.MONGODB_URI || "mongodb://localhost/curbside_restaurantsdb", //needs to have the same name in seed
+  process.env.MONGODB_URI || "mongodb://localhost/curbside_restaurantsdb", //needs to have the same name in 
   {
     useNewUrlParser: true,
     useUnifiedTopology: true,

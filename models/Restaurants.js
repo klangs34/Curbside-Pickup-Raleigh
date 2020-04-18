@@ -6,41 +6,39 @@ const RestaurantSchema = new Schema({
     type: String,
     unique: true,
   },
-  contact: [
-    {
-      lat: {
-        type: Number,
-      },
-      lng: {
-        type: Number,
-      },
-      street: {
-        type: String,
-      },
-      city: {
-        type: String,
-      },
-      zip: {
-        //need this?
-        type: Number,
-      },
-      phone: {
-        type: String,
-      },
-      instagram: {
-        type: String,
-      },
-      web_url: {
-        type: String,
-      },
-      online: {
-        type: String,
-      },
-      menu_url: {
-        type: String,
-      },
+  contact: {
+    lat: {
+      type: Number,
     },
-  ],
+    lng: {
+      type: Number,
+    },
+    street: {
+      type: String,
+    },
+    city: {
+      type: String,
+    },
+    zip: {
+      //need this?
+      type: Number,
+    },
+    phone: {
+      type: String,
+    },
+    instagram: {
+      type: String,
+    },
+    web_url: {
+      type: String,
+    },
+    online: {
+      type: String,
+    },
+    menu_url: {
+      type: String,
+    },
+  },
   hours: [
     {
       //default to daily hours, add option in window that says select aditional days and will populate in an empty string to modify for Sat, Sun, etc
