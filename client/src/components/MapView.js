@@ -26,6 +26,7 @@ class MapView extends React.Component {
         // style={{ height: "100%", width: "100%" }}
         containerStyle={{ width: "100%" }}
         initialCenter={{ lat: this.props.lat, lng: this.props.lng }}
+        center={{ lat: this.props.lat, lng: this.props.lng }}
       >
         <Marker
           position={{ lat: this.props.lat, lng: this.props.lng }}

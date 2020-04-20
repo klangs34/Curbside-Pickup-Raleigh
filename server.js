@@ -1,21 +1,18 @@
 const express = require("express");
 const logger = require("morgan");
 const mongoose = require("mongoose");
-const cors = require('cors');
-//const seed = require('./seeders/seed');
+const cors = require("cors");
+const path = require("path");
 
 const PORT = process.env.PORT || 8080;
 
 mongoose.connect(
-  process.env.MONGODB_URI || "mongodb://localhost/curbside_restaurantsdb", //needs to have the same name in 
+  process.env.MONGODB_URI || "mongodb://localhost/curbside_restaurantsdb", //needs to have the same name in
   {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   }
 );
-
-//seed db
-//seed;
 
 const app = express();
 
@@ -30,7 +27,7 @@ app.use(express.json());
 
 //use public or client build
 // app.use(express.static("public"));
-app.use(express.static("./client/public"));
+// app.use(express.static("./client/public"));
 
 if (process.env.NODE_ENV === "production") {
   //for when connected in Heroku
@@ -38,11 +35,15 @@ if (process.env.NODE_ENV === "production") {
 }
 
 //functions for routes imported here, should update with routes folder
-app.use('/', htmlRoutes)
+//app.use("/", htmlRoutes);
 app.use("/api", apiRoutes);
 
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "./client/build/index.html"));
+});
+
 // catch 404 and forward to error handler
-app.use(function(req, res, next) {
+app.use(function (req, res, next) {
   let err = new Error("Not Found");
   error.status = 404;
   next(err);
@@ -50,17 +51,16 @@ app.use(function(req, res, next) {
 });
 
 // error handler middleware
-app.use(function(err, req, res, next) {
+app.use(function (err, req, res, next) {
   // set locals, only providing error in development
   res.locals.message = err.message;
-  res.locals.error = req.app.get('env') === 'development' ? err : {};
+  res.locals.error = req.app.get("env") === "development" ? err : {};
 
   // render the error message
   res.status(err.status || 500).json({
-    error:
-    {
-      message: err.message || "Oops!  Something went wrong!"
-    }
+    error: {
+      message: err.message || "Oops!  Something went wrong!",
+    },
   });
 });
 

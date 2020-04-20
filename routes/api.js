@@ -11,6 +11,12 @@ Router.get("/get-restaurants", (req, res) => {
     res.json(data);
   });
 });
+Router.post("/restaurants", (req, res) => {
+  db.Restaurants.insertMany(req.body).then((data) => {
+    console.log(data);
+    res.json(data);
+  });
+});
 
 Router.get("/get-restaurant/:id", (req, res) => {
   const { id } = req.params;
