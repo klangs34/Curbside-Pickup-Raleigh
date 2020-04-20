@@ -50,24 +50,6 @@ class Home extends React.Component {
             lat: position.coords.latitude,
             lng: position.coords.longitude,
           });
-          // axios
-          //   .get("/api/get-restaurants")
-          //   .then((data) => {
-          //     console.log(data);
-          //     this.setState({
-          //       restaurants: data.data.filter((rest) => {
-          //         return (
-          //           this.distance(
-          //             parseFloat(this.state.lat),
-          //             parseFloat(this.state.lng),
-          //             parseFloat(rest.contact.lat),
-          //             parseFloat(rest.contact.lng)
-          //           ) <= 10
-          //         );
-          //       }),
-          //     });
-          //   })
-          //   .catch((err) => console.log(err));
           API.getRestaurants()
             .then((data) => {
               console.log(data);
@@ -151,7 +133,7 @@ class Home extends React.Component {
               handleInputChange={this.handleInputChange}
             />
           </div>
-          {/* body  */}
+          {/* map  */}
           <div className="card-body">
             <div>
               <Filter />
@@ -168,40 +150,17 @@ class Home extends React.Component {
               />
             </div>
           </div>
-          {/* closes card  */}
         </div>
-
+        {/* restaurant cards  */}
         <div className="row">
           {/* <div className="col-sm-6"> */}
           <div class="row row-cols-md-1 row-cols-md-2 row-cols-md-3 row-cols-md-4 card-deck">
-            {/* <RestaurantCard restaurants={this.state.restaurants} /> */}
-            {/* {searchValue &&
-              restaurants
-                .filter((restaurant) => restaurant.name.first === searchValue)
-                .map((closestRestaurants) => (
-                  <RestaurantCard
-                    key={closestRestaurants.id.value}
-                    restaurant={closestRestaurants}
-                  />
-                ))} */}
             {this.state.restaurants.slice(0, 4).map((restaurant) => (
               <RestaurantCard
                 key={restaurant._id.value}
                 restaurant={restaurant}
               />
             ))}
-          </div>
-          <div className="card-body m-2">
-            <div>
-              <Filter />
-            </div>
-            <div className="align-content-stretch flex-wrap">
-              <MapView
-                lat={this.state.lat}
-                lng={this.state.lng}
-                restaurants={this.state.restaurants}
-              />
-            </div>
           </div>
         </div>
       </div>
