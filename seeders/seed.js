@@ -1,14 +1,14 @@
 let mongoose = require("mongoose");
 let db = require("../models");
 
-// mongoose.connect(
-//   process.env.MONGODB_URI || "mongodb://localhost/curbside_restaurantsdb",
-//   {
-//     //must be the same as in the server fie
-//     useNewUrlParser: true,
-//     useFindAndModify: false
-//   }
-// );
+mongoose.connect(
+  process.env.MONGODB_URI || "mongodb://localhost/curbside_restaurantsdb",
+  {
+    //must be the same as in the server fie
+    useNewUrlParser: true,
+    useFindAndModify: false,
+  }
+);
 
 let restaurantSeed = [
   {
@@ -42,6 +42,7 @@ let restaurantSeed = [
       zip: 27608,
       phone: "984-232-8479",
       instagram: "@neuseriverbrewingco",
+      web_url: "https://www.neuseriverbrewing.com/brasserie",
     },
     hours: [
       {

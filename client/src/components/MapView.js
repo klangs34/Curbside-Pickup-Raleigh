@@ -27,6 +27,12 @@ class MapView extends React.Component {
         containerStyle={{ width: "100%" }}
         initialCenter={{ lat: this.props.lat, lng: this.props.lng }}
       >
+        <Marker
+          position={{ lat: this.props.lat, lng: this.props.lng }}
+          icon={{
+            url: "http://maps.google.com/mapfiles/ms/icons/blue-dot.png",
+          }}
+        />
         {this.props.restaurants.map((restaurant) => (
           <Marker
             key={restaurant._id}

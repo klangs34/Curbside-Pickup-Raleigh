@@ -110,11 +110,11 @@ class Home extends React.Component {
         <div className="jumbotron jumbotron-fluid bg-info">
           <div className="container">
             <h1 className="display-4 text-center">
-              Restaurant Pick-up Raleigh Area
+              Restaurant Pick-up Raleigh
             </h1>
             <p className="lead  text-center">
-              An up-to-date database of restaurants offering to-go and delivery
-              while under Stay At Home.
+              An database of local restaurants offering to-go and delivery
+              options during Stay-At-Home.
             </p>
           </div>
         </div>
@@ -150,11 +150,9 @@ class Home extends React.Component {
         </div>
 
         <div className="row">
-          <div className="col-sm-6">
-            <RestaurantCard
-              // key={this.state.restaurants.id.value}
-              restaurants={this.state.restaurants}
-            />
+          {/* <div className="col-sm-6"> */}
+          <div class="row row-cols-md-1 row-cols-md-2 row-cols-md-3 row-cols-md-4 card-deck">
+            {/* <RestaurantCard restaurants={this.state.restaurants} /> */}
             {/* {searchValue &&
               restaurants
                 .filter((restaurant) => restaurant.name.first === searchValue)
@@ -163,13 +161,13 @@ class Home extends React.Component {
                     key={closestRestaurants.id.value}
                     restaurant={closestRestaurants}
                   />
-                ))}
-            {!searchValue &&
-              restaurants
-                .slice(0, 5)
-                .map((restaurant) => (
-                  <RestaurantCard key={restaurant.id.value} restaurant={restaurant} />
                 ))} */}
+            {this.state.restaurants.slice(0, 4).map((restaurant) => (
+              <RestaurantCard
+                key={restaurant._id.value}
+                restaurant={restaurant}
+              />
+            ))}
           </div>
         </div>
       </div>
