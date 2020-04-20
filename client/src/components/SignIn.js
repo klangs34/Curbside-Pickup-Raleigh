@@ -20,6 +20,7 @@ const SignIn = ({ setIsLoggedToTrue }) => {
         setDisplayError(err.response.data.error.message);
       });
   };
+
   return (
     <div className="container">
       {displayError && (
@@ -29,7 +30,7 @@ const SignIn = ({ setIsLoggedToTrue }) => {
       )}
       <form>
         <div className="form-group">
-          <label htmlFor="exampleInputEmail1">Email address</label>
+          <label htmlFor="exampleInputEmail1">Email Address</label>
           <input
             type="email"
             className="form-control"

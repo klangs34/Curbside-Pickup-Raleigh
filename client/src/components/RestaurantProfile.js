@@ -2,7 +2,7 @@ import React from "react";
 import Hours from "./Hours";
 import { Link } from "react-router-dom";
 
-const MyProfile = ({ isLogged }) => {
+const RestaurantProfile = ({ isLogged }) => {
   return (
     <div className="container">
       {isLogged ? (
@@ -103,10 +103,12 @@ const MyProfile = ({ isLogged }) => {
           </div>
         </form>
       ) : (
-        <Link to="/sign-in">Login</Link>
+        <p> You have been logged out</p>
+        // not sure what to do here, need to show anything?
+        // <Link to="/sign-in">Login</Link>
       )}
     </div>
   );
 };
 
-export default MyProfile;
+export default RestaurantProfile;

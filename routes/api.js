@@ -62,7 +62,7 @@ Router.post("/login", async (req, res, next) => {
   }
 });
 
-Router.post("/signup", async (req, res, next) => {
+Router.post("/createaccount", async (req, res, next) => {
   //add database logic
   try {
     let user = await db.Users.create(req.body);
