@@ -15,13 +15,18 @@ const SignIn = ({ setIsLoggedToTrue }) => {
         localStorage.setItem("jwtToken", data.data.token);
         setIsLoggedToTrue();
       })
-      .catch((err) => setDisplayError(err.response.data.error.message));
+      .catch((err) => {
+        //console.log(err);
+        setDisplayError(err.response.data.error.message);
+      });
   };
   return (
     <div className="container">
-      {displayError && <div className="alert alert-danger" role="alert">
-      {displayError}
-      </div>}
+      {displayError && (
+        <div className="alert alert-danger" role="alert">
+          {displayError}
+        </div>
+      )}
       <form>
         <div className="form-group">
           <label htmlFor="exampleInputEmail1">Email address</label>
@@ -49,7 +54,7 @@ const SignIn = ({ setIsLoggedToTrue }) => {
           type="submit"
           className="btn btn-primary"
         >
-          Sign In
+          Sign in
         </button>
       </form>
     </div>
