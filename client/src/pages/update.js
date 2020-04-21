@@ -1,9 +1,32 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import API from "../utils/API";
 
 function Update() {
   const validCategories = ["Food", "Alcohol", "Food and Alcohol"];
-  const orderMethods = [""];
+  const orderMethods = ["online", "phone"];
+  const validHourCounts = [1, 2, 3, 4, 5, 6, 7];
+  const [hourSlots, setHourSlots] = useState(0);
+  const [contact, setContact] = useState({
+    lat: 0.0,
+    lng: 0.0,
+    street: "",
+    city: "",
+    zip: "",
+    phone: "",
+    instagram: "",
+    web_url: "",
+    online: "",
+    menu_url: "",
+  });
+  const [times, setTimes] = useState({
+    hours: [],
+    open: [],
+    close: [],
+    currentSlot: 0
+  });
+  const [restName, setRestName] = useState("");
+  const [category, setCategory] = useState("");
+  const [order, setOrder] = useState("");
   const restaurantRef = useRef();
   const addressRef = useRef();
   const cityRef = useRef();
@@ -17,6 +40,30 @@ function Update() {
   const catRef = useRef();
   const infoRef = useRef();
 
+  const handleContactInputChange = e => {
+    const { name, value } = e.target;
+
+    setContact({ ...contact, [name]: value });
+  }
+
+  const handleHourSlots = e => {
+    const { value } = e.target;
+
+    setHourSlots(value);
+
+    const array = [];
+
+    for (var i = 0; i < hourSlots; i++) {
+      array.push("");
+    }
+
+    setTimes({ ...times, hours: array, open: array, close: array });
+  }
+
+  const handleTimesInputChange = e => {
+    const { name, value, index } = e.target;
+  }
+
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -24,17 +71,15 @@ function Update() {
     API.findLocation(place).then((data) => {
       const restaurant = {
         name: restaurantRef.current.value,
-        address: [
-          {
-            lat: data.data.results[0].geometry.location.lat,
-            lng: data.data.results[0].geometry.location.lng,
-            street: addressRef.current.value,
-            city: cityRef.current.value,
-            zip: zipRef.current.value,
-            phone: phoneRef.current.value,
-            web_url: urlRef.current.value,
-          },
-        ],
+        contact: {
+          lat: data.data.results[0].geometry.location.lat,
+          lng: data.data.results[0].geometry.location.lng,
+          street: addressRef.current.value,
+          city: cityRef.current.value,
+          zip: zipRef.current.value,
+          phone: phoneRef.current.value,
+          web_url: urlRef.current.value,
+        },
         hours: [
           {
             days: hoursRef.current.value,
@@ -54,21 +99,39 @@ function Update() {
 
   return (
     <form className="form-group mt-5 mb-5" onSubmit={handleSubmit}>
-      <input required ref={restaurantRef} placeholder="Restaurant Name" />
-      <input required ref={addressRef} placeholder="Street Address" />
-      <input required ref={cityRef} placeholder="City" defaultValue="Raleigh" />
-      <input ref={zipRef} placeholder="ZIP code" />
-      <input ref={phoneRef} placeholder="Phone Number" />
-      <input required ref={hoursRef} placeholder="Store Hours" />
-      <input required ref={openRef} placeholder="Opening Time" />
-      <input required ref={closeRef} placeholder="Closing Time" />
-      <input ref={urlRef} placeholder="Store Website" />
-      <input required ref={catRef} placeholder="Category" />
-      <input required ref={orderRef} placeholder="Order Methods" />
-      <textarea ref={infoRef} placeholder="additional info" />
-      <button className="btn btn-success mt-3 mb-5" type="submit">
-        Update Data
+      <div className="row">
+        <input className="col m-3" required ref={restaurantRef} placeholder="Restaurant Name" />
+        <input className="col m-3" ref={phoneRef} placeholder="Phone Number" />
+      </div>
+      <div className="row">
+        <input className="col m-3" required ref={addressRef} placeholder="Street Address" />
+        <input className="col m-3" required ref={cityRef} placeholder="City" defaultValue="Raleigh" />
+        <input className="col m-3" ref={zipRef} placeholder="ZIP code" />
+      </div>
+      {hoursLength ? (
+        <div className="row">
+          <div className="col">How many time slots are needed</div>
+          {validHourCounts.map(count)}
+        </div>
+      ) : ()}
+      <div className="row">
+        <input className="col m-3" required ref={hoursRef} placeholder="Store Hours" />
+        <input className="col m-3" required ref={openRef} placeholder="Opening Time" />
+        <input className="col m-3" required ref={closeRef} placeholder="Closing Time" />
+      </div>
+      <div className="row">
+        <input className="col m-3" ref={urlRef} placeholder="Store Website" />
+        <input className="col m-3" required ref={catRef} placeholder="Category" />
+        <input className="col m-3" required ref={orderRef} placeholder="Order Methods" />
+      </div>
+      <div className="row">
+        <textarea className="col m-3" ref={infoRef} placeholder="additional info" />
+        <button className="btn btn-success mt-3 mb-5 col" type="submit">
+          Update Data
       </button>
+      </div>
     </form>
   );
 }
+
+export default Update;
