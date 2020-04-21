@@ -6,7 +6,7 @@ mongoose.connect(
   {
     //must be the same as in the server fie
     useNewUrlParser: true,
-    useFindAndModify: false
+    useFindAndModify: false,
   }
 );
 
@@ -42,6 +42,7 @@ let restaurantSeed = [
       zip: 27608,
       phone: "984-232-8479",
       instagram: "@neuseriverbrewingco",
+      web_url: "https://www.neuseriverbrewing.com/brasserie",
     },
     hours: [
       {
@@ -116,8 +117,7 @@ let restaurantSeed = [
       phone: "919-775-0556",
       instagram: "@joseandsons",
       web_url: "https://www.joseandsons.com/",
-      online:
-        "https://www.joseandsons.com/online-ordering/jose-and-sons/menu",
+      online: "https://www.joseandsons.com/online-ordering/jose-and-sons/menu",
     },
     hours: [
       {
@@ -224,8 +224,7 @@ let restaurantSeed = [
       web_url: "http://www.salsafreshgrill.com/",
       online:
         "https://www.doordash.com/store/salsa-fresh-mexican-grill-raleigh-208499/en-US?utm_campaign=208499&utm_content=red-small&utm_medium=website&utm_source=partner-link",
-      menu_url:
-        "http://www.salsafreshgrill.com/salsa-fresh-mexican-grill-menu",
+      menu_url: "http://www.salsafreshgrill.com/salsa-fresh-mexican-grill-menu",
     },
     hours: [
       {

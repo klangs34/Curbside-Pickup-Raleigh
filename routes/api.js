@@ -7,7 +7,7 @@ const db = require("../models");
 
 Router.get("/get-restaurants", (req, res) => {
   db.Restaurants.find({}).then((data) => {
-    console.log(data);
+    console.log("get");
     res.json(data);
   });
 });
@@ -62,7 +62,7 @@ Router.post("/login", async (req, res, next) => {
   }
 });
 
-Router.post("/signup", async (req, res, next) => {
+Router.post("/createaccount", async (req, res, next) => {
   //add database logic
   try {
     let user = await db.Users.create(req.body);
