@@ -40,6 +40,7 @@ let restaurantSeed = [
       zip: 27608,
       phone: "984-232-8479",
       instagram: "@neuseriverbrewingco",
+      web_url: "https://www.neuseriverbrewing.com/brasserie",
     },
     hours: [
       {
@@ -115,11 +116,15 @@ let restaurantSeed = [
       instagram: "@joseandsons",
       web_url: "https://www.joseandsons.com/",
 <<<<<<< HEAD
+<<<<<<< HEAD
       online: "https://www.joseandsons.com/online-ordering/jose-and-sons/menu",
 =======
       online:
         "https://www.joseandsons.com/online-ordering/jose-and-sons/menu",
 >>>>>>> ca2a2a5cbeea298aadaa99721605dd8367a1058b
+=======
+      online: "https://www.joseandsons.com/online-ordering/jose-and-sons/menu",
+>>>>>>> ca04eb829193fbc22858943984a0d73344736118
     },
     hours: [
       {
@@ -227,11 +232,15 @@ let restaurantSeed = [
       online:
         "https://www.doordash.com/store/salsa-fresh-mexican-grill-raleigh-208499/en-US?utm_campaign=208499&utm_content=red-small&utm_medium=website&utm_source=partner-link",
 <<<<<<< HEAD
+<<<<<<< HEAD
       menu_url: "http://www.salsafreshgrill.com/salsa-fresh-mexican-grill-menu",
 =======
       menu_url:
         "http://www.salsafreshgrill.com/salsa-fresh-mexican-grill-menu",
 >>>>>>> ca2a2a5cbeea298aadaa99721605dd8367a1058b
+=======
+      menu_url: "http://www.salsafreshgrill.com/salsa-fresh-mexican-grill-menu",
+>>>>>>> ca04eb829193fbc22858943984a0d73344736118
     },
     hours: [
       {

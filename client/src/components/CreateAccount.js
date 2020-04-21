@@ -1,31 +1,30 @@
 import React, { useState } from "react";
 import axios from "axios";
 
-const SignUp = ({ setIsLoggedToTrue }) => {
+const CreateAccount = ({ setIsLoggedToTrue, ...props }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
   const [displayError, setDisplayError] = useState("");
 
   const handleSignup = (e) => {
     e.preventDefault();
+
     axios
-      .post("/api/signup", { email, password })
+      .post("/api/createaccount", { email, password })
       .then((data) => {
         localStorage.setItem("jwtToken", data.data.token);
         setIsLoggedToTrue();
+        props.history.push("/restaurant-profile")
       })
       .catch((err) => {
         console.log(err.response.data.error.message);
         setDisplayError(err.response.data.error.message);
       });
-
   };
 
   return (
     <div className="container">
       <form>
-
         {displayError && (
           <div className="alert alert-danger" role="alert">
             {displayError}
@@ -33,7 +32,6 @@ const SignUp = ({ setIsLoggedToTrue }) => {
         )}
         <div className="form-group">
           <label htmlFor="exampleInputEmail1">Email Address</label>
-
           <input
             type="email"
             className="form-control"
@@ -59,11 +57,10 @@ const SignUp = ({ setIsLoggedToTrue }) => {
           className="btn btn-primary"
         >
           Create account
-
         </button>
       </form>
     </div>
   );
 };
 
-export default SignUp;
+export default CreateAccount;

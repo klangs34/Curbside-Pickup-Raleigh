@@ -1,6 +1,5 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import './footerSpacer.css';
 
 const footer = () => (
   <>
@@ -15,11 +14,11 @@ const footer = () => (
                                     color: "white",
                                     textDecoration: "none"
                                   }}>Home</NavLink> </li>
-              <li className="pb-2"><NavLink to='/restaraunts'  className="text-white" activeStyle={{
+              <li className="pb-2"><NavLink to='/restaraunt-profile'  className="text-white" activeStyle={{
                                     fontWeight: "bold",
                                     textDecoration: "none"
                                   }}>Restaraunts</NavLink> </li>
-              <li className="pb-2"><NavLink to='/sign-up'  className="text-white" activeStyle={{
+              <li className="pb-2"><NavLink to='/create-account'  className="text-white" activeStyle={{
                                     fontWeight: "bold",
                                     textDecoration: "none"
                                   }}>Create Account</NavLink> </li>

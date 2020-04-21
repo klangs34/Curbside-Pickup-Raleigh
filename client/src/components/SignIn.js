@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 
-const SignIn = ({ setIsLoggedToTrue }) => {
+const SignIn = ({ setIsLoggedToTrue, ...props }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [displayError, setDisplayError] = useState("");
@@ -9,17 +9,20 @@ const SignIn = ({ setIsLoggedToTrue }) => {
   const handleSignin = (e) => {
     e.preventDefault();
     setDisplayError("");
+    
     axios
       .post("/api/login", { email, password })
       .then((data) => {
         localStorage.setItem("jwtToken", data.data.token);
         setIsLoggedToTrue();
+        props.history.push("/restaurant-profile")
       })
       .catch((err) => {
-        //console.log(err);
-        setDisplayError(err.response.data.error.message);
+        console.log(err);
+        //setDisplayError(err.response.data.error.message);
       });
   };
+
   return (
     <div className="container">
       {displayError && (
@@ -29,7 +32,7 @@ const SignIn = ({ setIsLoggedToTrue }) => {
       )}
       <form>
         <div className="form-group">
-          <label htmlFor="exampleInputEmail1">Email address</label>
+          <label htmlFor="exampleInputEmail1">Email Address</label>
           <input
             type="email"
             className="form-control"
