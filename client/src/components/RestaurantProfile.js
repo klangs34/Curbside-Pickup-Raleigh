@@ -192,7 +192,7 @@ const RestaurantProfile = ({ isLogged }) => {
             </select>
           </div>
           <div className="form-group menu">
-            <label htmlFor="examphtmlFeFormControlInput1">Menu Location</label>
+            <label htmlFor="menu_url">Menu Location</label>
             <input
               type="text"
               className="form-control"
