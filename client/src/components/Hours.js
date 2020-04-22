@@ -10,7 +10,7 @@ function Hours() {
           id="inlineCheckbox1"
           value="option1"
         />
-        <label className="form-check-label" for="inlineCheckbox1">
+        <label className="form-check-label" htmlFor="inlineCheckbox1">
           Mon
         </label>
       </div>
@@ -21,7 +21,7 @@ function Hours() {
           id="inlineCheckbox2"
           value="option2"
         />
-        <label className="form-check-label" for="inlineCheckbox2">
+        <label className="form-check-label" htmlFor="inlineCheckbox2">
           Tues
         </label>
       </div>
@@ -32,7 +32,7 @@ function Hours() {
           id="inlineCheckbox3"
           value="option3"
         />
-        <label className="form-check-label" for="inlineCheckbox3">
+        <label className="form-check-label" htmlFor="inlineCheckbox3">
           Wed
         </label>
       </div>
@@ -43,7 +43,7 @@ function Hours() {
           id="inlineCheckbox2"
           value="option4"
         />
-        <label className="form-check-label" for="inlineCheckbox2">
+        <label className="form-check-label" htmlFor="inlineCheckbox2">
           Thurs
         </label>
       </div>
@@ -54,7 +54,7 @@ function Hours() {
           id="inlineCheckbox2"
           value="option5"
         />
-        <label className="form-check-label" for="inlineCheckbox2">
+        <label className="form-check-label" htmlFor="inlineCheckbox2">
           Fri
         </label>
       </div>
@@ -65,7 +65,7 @@ function Hours() {
           id="inlineCheckbox2"
           value="option6"
         />
-        <label className="form-check-label" for="inlineCheckbox2">
+        <label className="form-check-label" htmlFor="inlineCheckbox2">
           Sat
         </label>
       </div>
@@ -76,7 +76,7 @@ function Hours() {
           id="inlineCheckbox2"
           value="option7"
         />
-        <label className="form-check-label" for="inlineCheckbox2">
+        <label className="form-check-label" htmlFor="inlineCheckbox2">
           Sun
         </label>
       </div>
@@ -87,7 +87,7 @@ function Hours() {
           id="inlineCheckbox2"
           value="option8"
         />
-        <label className="form-check-label" for="inlineCheckbox2">
+        <label className="form-check-label" htmlFor="inlineCheckbox2">
           Daily
         </label>
       </div>
@@ -102,7 +102,7 @@ function Hours() {
             id="inlineCheckbox2"
             value="option5"
           />
-          <label className="form-check-label" for="inlineCheckbox2">
+          <label className="form-check-label" htmlFor="inlineCheckbox2">
             am
           </label>
         </div>
@@ -113,7 +113,7 @@ function Hours() {
             id="inlineCheckbox2"
             value="option5"
           />
-          <label className="form-check-label" for="inlineCheckbox2">
+          <label className="form-check-label" htmlFor="inlineCheckbox2">
             pm
           </label>
         </div>
@@ -127,7 +127,7 @@ function Hours() {
             id="inlineCheckbox2"
             value="option5"
           />
-          <label className="form-check-label" for="inlineCheckbox2">
+          <label className="form-check-label"  htmlFor="inlineCheckbox2">
             am
           </label>
         </div>
@@ -138,7 +138,7 @@ function Hours() {
             id="inlineCheckbox2"
             value="option5"
           />
-          <label className="form-check-label" for="inlineCheckbox2">
+          <label className="form-check-label" htmlFor="inlineCheckbox2">
             pm
           </label>
         </div>

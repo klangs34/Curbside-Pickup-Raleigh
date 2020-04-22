@@ -1,15 +1,13 @@
 let mongoose = require("mongoose");
 let db = require("../models");
-
-mongoose.connect(
-  process.env.MONGODB_URI || "mongodb://localhost/curbside_restaurantsdb",
+mongoose.connect( 
+  "mongodb://heroku_9z990s6r:dpgrmq6258re3a4gdhinoila4q@ds141815.mlab.com:41815/heroku_9z990s6r",
   {
     //must be the same as in the server fie
     useNewUrlParser: true,
     useFindAndModify: false,
   }
 );
-
 let restaurantSeed = [
   {
     name: "Vidrio",
@@ -117,7 +115,16 @@ let restaurantSeed = [
       phone: "919-775-0556",
       instagram: "@joseandsons",
       web_url: "https://www.joseandsons.com/",
+<<<<<<< HEAD
+<<<<<<< HEAD
       online: "https://www.joseandsons.com/online-ordering/jose-and-sons/menu",
+=======
+      online:
+        "https://www.joseandsons.com/online-ordering/jose-and-sons/menu",
+>>>>>>> ca2a2a5cbeea298aadaa99721605dd8367a1058b
+=======
+      online: "https://www.joseandsons.com/online-ordering/jose-and-sons/menu",
+>>>>>>> ca04eb829193fbc22858943984a0d73344736118
     },
     hours: [
       {
@@ -224,7 +231,16 @@ let restaurantSeed = [
       web_url: "http://www.salsafreshgrill.com/",
       online:
         "https://www.doordash.com/store/salsa-fresh-mexican-grill-raleigh-208499/en-US?utm_campaign=208499&utm_content=red-small&utm_medium=website&utm_source=partner-link",
+<<<<<<< HEAD
+<<<<<<< HEAD
       menu_url: "http://www.salsafreshgrill.com/salsa-fresh-mexican-grill-menu",
+=======
+      menu_url:
+        "http://www.salsafreshgrill.com/salsa-fresh-mexican-grill-menu",
+>>>>>>> ca2a2a5cbeea298aadaa99721605dd8367a1058b
+=======
+      menu_url: "http://www.salsafreshgrill.com/salsa-fresh-mexican-grill-menu",
+>>>>>>> ca04eb829193fbc22858943984a0d73344736118
     },
     hours: [
       {
@@ -237,7 +253,6 @@ let restaurantSeed = [
     category: "food and alcohol",
   },
 ];
-
 db.Restaurants.deleteMany({})
   .then(() => db.Restaurants.collection.insertMany(restaurantSeed))
   .then((data) => {

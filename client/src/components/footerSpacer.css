@@ -1,0 +1,10 @@
+#footer-spacer {
+    position: fixed;
+    height: 100%;
+    width: 30px;
+    left: 0;
+    top: 0;
+    z-index: 1100;
+    background-color: white;
+    transform: translateX(-100%);
+}

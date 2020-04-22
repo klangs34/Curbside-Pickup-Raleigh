@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 
-const CreateAccount = ({ setIsLoggedToTrue }) => {
+const CreateAccount = ({ setIsLoggedToTrue, ...props }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [displayError, setDisplayError] = useState("");
@@ -14,6 +14,7 @@ const CreateAccount = ({ setIsLoggedToTrue }) => {
       .then((data) => {
         localStorage.setItem("jwtToken", data.data.token);
         setIsLoggedToTrue();
+        props.history.push("/restaurant-profile")
       })
       .catch((err) => {
         console.log(err.response.data.error.message);
