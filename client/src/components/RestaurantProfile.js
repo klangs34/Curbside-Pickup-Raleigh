@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Hours from "./Hours";
 import API from "../utils/API";
-import { Link } from "react-router-dom";
 import axios from "axios";
 
 const RestaurantProfile = ({ isLogged }) => {
@@ -20,7 +19,7 @@ const RestaurantProfile = ({ isLogged }) => {
     });
   }, []);
 
-  console.log(restaurantData);
+  //console.log(restaurantData);
 
   const [name, setName] = useState("");
   const [category, setCategory] = useState("");
@@ -50,7 +49,7 @@ const RestaurantProfile = ({ isLogged }) => {
     const { value } = e.target;
     setName(value);
   };
-  console.log(name);
+  //console.log(name);
 
   const handleContactInputChange = (e) => {
     const { id, value } = e.target;
@@ -62,13 +61,13 @@ const RestaurantProfile = ({ isLogged }) => {
     console.log(e.target.value);
     setCategory(e.target.value);
   };
-  console.log(category);
+  //console.log(category);
 
   const handleOrderChange = (e) => {
     console.log(e.target.value);
     setOrder(e.target.value);
   };
-  console.log(order);
+  //console.log(order);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -76,7 +75,7 @@ const RestaurantProfile = ({ isLogged }) => {
     const place = `${contact.street} ${contact.city} ${contact.zip}`;
     API.findLocation(place).then((data) => {
       const userId = localStorage.getItem("id");
-      console.log(userId, category, restaurantData.category);
+      //console.log(userId, category, restaurantData.category);
       const restaurant = {
         user: userId,
         name: name || restaurantData.name,
