@@ -23,7 +23,6 @@ class MapView extends React.Component {
       <Map
         google={this.props.google}
         zoom={12}
-        // style={{ height: "100%", width: "100%" }}
         containerStyle={{ width: "100%" }}
         initialCenter={{ lat: this.props.lat, lng: this.props.lng }}
         center={{ lat: this.props.lat, lng: this.props.lng }}
@@ -33,20 +32,9 @@ class MapView extends React.Component {
           icon={{
             url: "http://maps.google.com/mapfiles/ms/icons/blue-dot.png",
           }}
-          // onClick={this.setState({
-          //   // selectedPlace: props.restaurant,
-          //   // activeMarker: marker,
-          //   showingInfoWindow: true,
-          // })}
+          restaurant={{ name: "Your Location" }}
+          onClick={this.onMarkerClick}
         />
-        {/* <InfoWindow
-          marker={this.state.activeMarker}
-          visible={this.state.showingInfoWindow}
-        >
-          <div>
-            <h3>Your Location</h3>
-          </div>
-        </InfoWindow> */}
         {this.props.restaurants.map((restaurant) => (
           <Marker
             key={restaurant._id}
@@ -58,7 +46,6 @@ class MapView extends React.Component {
             onClick={this.onMarkerClick}
           />
         ))}
-
         <InfoWindow
           marker={this.state.activeMarker}
           visible={this.state.showingInfoWindow}

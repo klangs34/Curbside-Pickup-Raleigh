@@ -1,29 +1,14 @@
 import React from "react";
-
-// handleClick = (user) => {
-//   saveUser(user).then(() =>
-//     this.props.history.push('/restaurant-view')
-//   ))
-
-// const handleClick = () => {
-//   console.log("yay");
-//   // this.props.history.push("/restaurant-view");
-// };
-
-function handleClick() {
-  pathname:/restaurant-view;
-  state: {
-
-
-  }
-
-  // e.preventDefault();
-  // console.log("The link was clicked.");
-  this.props.history.push("/restaurant-view");
-}
+import { withRouter } from "react-router-dom";
 
 // Depending on the current path, this component sets the "active" class on the appropriate navigation link item
 function RestaurantCard(props) {
+  const handleClick = (restaurant) => {
+    console.log("yay");
+    props.setRestaurant(restaurant);
+    props.history.push("/restaurant-view");
+  };
+
   console.log(props);
   return (
     <div class="col mb-4">
@@ -52,8 +37,7 @@ function RestaurantCard(props) {
         <div class="card-footer">
           <button
             href="/restaurant-view"
-            // onClick={this.handleClick}
-            onClick={handleClick}
+            onClick={() => handleClick(props.restaurant)}
             className="btn btn-primary"
           >
             View Restaurant Details
@@ -66,4 +50,4 @@ function RestaurantCard(props) {
   );
 }
 
-export default RestaurantCard;
+export default withRouter(RestaurantCard);

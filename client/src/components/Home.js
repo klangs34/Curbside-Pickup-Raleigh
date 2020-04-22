@@ -108,6 +108,7 @@ class Home extends React.Component {
   };
 
   render() {
+    console.log(this.props);
     return (
       <div className="container">
         {/* jumbotron  */}
@@ -117,7 +118,8 @@ class Home extends React.Component {
               Restaurant Pick-up Raleigh
             </h1>
             <p className="lead  text-center">
-              A database of local restaurants offering to-go and delivery options during Stay-At-Home.
+              A database of local restaurants offering to-go and delivery
+              options during Stay-At-Home.
             </p>
           </div>
         </div>
@@ -158,9 +160,8 @@ class Home extends React.Component {
               <RestaurantCard
                 // these are the props
                 // key={restaurant._id.value}
-                
+                setRestaurant={this.props.setRestaurant}
                 restaurant={restaurant}
-
               />
             ))}
           </div>

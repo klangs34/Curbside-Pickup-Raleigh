@@ -7,7 +7,7 @@ import CreateAccount from "./components/CreateAccount";
 import Signin from "./components/SignIn";
 import RestaurantProfile from "./components/RestaurantProfile";
 import RestaurantView from "./components/RestaurantView";
-import FooterSpacer from './components/FooterSpacer';
+import FooterSpacer from "./components/FooterSpacer";
 
 function App() {
   const [isLogged, setIsLogged] = useState(false);
@@ -20,36 +20,49 @@ function App() {
     setIsLogged(false);
   };
 
+  const [restaurant, setRestaurant] = useState(null);
+
   return (
     <div>
       <Navbar isLogged={isLogged} setIsLoggedToFalse={setIsLoggedToFalse} />
       <FooterSpacer />
       <Switch>
-        <Route exact path="/" component={Home} />
+        <Route
+          exact
+          path="/"
+          component={(props) => (
+            <Home setRestaurant={setRestaurant} {...props} />
+          )}
+        />
         <Route
           exact
           path="/create-account"
           component={(props) => (
-            // <CreateAccount />
             <CreateAccount setIsLoggedToTrue={setIsLoggedToTrue} {...props} />
           )}
         />
         <Route
           exact
           path="/sign-in"
-          component={(props) => <Signin setIsLoggedToTrue={setIsLoggedToTrue} {...props} />}
+          component={(props) => (
+            <Signin setIsLoggedToTrue={setIsLoggedToTrue} {...props} />
+          )}
         />
         <Route
           exact
           path="/restaurant-profile"
           component={() => <RestaurantProfile isLogged={isLogged} />}
         />
-        <Route path="/restaurant-view" component={() => <RestaurantView />} />
+        <Route
+          path="/restaurant-view"
+          component={(props) => (
+            <RestaurantView restaurant={restaurant} {...props} />
+          )}
+        />
       </Switch>
       <Footer />
     </div>
   );
-  
 }
 
 export default App;
