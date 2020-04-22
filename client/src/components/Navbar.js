@@ -1,10 +1,11 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 
-function Navbar({ isLogged, setIsLoggedToFalse }) {
-  const handleLogout = () => {
+function Navbar({ isLogged, setIsLoggedToFalse, ...props }) {
+  const handleLogout = (props) => {
     localStorage.setItem("jwtToken", "");
     setIsLoggedToFalse();
+    props.history.push("/");
   };
 
   return (
@@ -40,7 +41,8 @@ function Navbar({ isLogged, setIsLoggedToFalse }) {
       {!isLogged ? (
         <Link to="/sign-in">Sign In</Link>
       ) : (
-        <div onClick={handleLogout} className="btn btn-link">
+        // <div onClick={handleLogout} className="btn btn-link">
+        <div onClick={() => handleLogout()} className="btn btn-link">
           Logout
         </div>
       )}
@@ -53,4 +55,4 @@ function Navbar({ isLogged, setIsLoggedToFalse }) {
   );
 }
 
-export default Navbar;
+export default withRouter(Navbar);
