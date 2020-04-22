@@ -117,8 +117,7 @@ class Home extends React.Component {
               Restaurant Pick-up Raleigh
             </h1>
             <p className="lead  text-center">
-              An database of local restaurants offering to-go and delivery
-              options during Stay-At-Home.
+              A database of local restaurants offering to-go and delivery options during Stay-At-Home.
             </p>
           </div>
         </div>
@@ -157,8 +156,11 @@ class Home extends React.Component {
           <div class="row row-cols-md-1 row-cols-md-2 row-cols-md-3 row-cols-md-4 card-deck">
             {this.state.restaurants.slice(0, 4).map((restaurant) => (
               <RestaurantCard
-                key={restaurant._id.value}
+                // these are the props
+                // key={restaurant._id.value}
+                
                 restaurant={restaurant}
+
               />
             ))}
           </div>

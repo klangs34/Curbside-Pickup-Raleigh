@@ -42,11 +42,12 @@ function App() {
           path="/restaurant-profile"
           component={() => <RestaurantProfile isLogged={isLogged} />}
         />
-        <Route component={RestaurantView} />
+        <Route path="/restaurant-view" component={() => <RestaurantView />} />
       </Switch>
       <Footer />
     </div>
   );
+  
 }
 
 export default App;

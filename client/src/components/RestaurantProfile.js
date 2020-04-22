@@ -105,7 +105,14 @@ const RestaurantProfile = ({ isLogged }) => {
       ) : (
         <p> You have been logged out</p>
         // not sure what to do here, need to show anything?
-        // <Link to="/sign-in">Login</Link>
+        // <Link to="/sign-in">Login again</Link> 
+        //would like this link to redirect, not just show a link
+        // <Link to={{
+        //   pathname: '/',
+        //   state: {
+        //     // fromNotifications: true
+        //   }
+        // }}>Tyler McGinnis</Link>
       )}
     </div>
   );

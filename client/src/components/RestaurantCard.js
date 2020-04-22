@@ -1,8 +1,30 @@
 import React from "react";
 
+// handleClick = (user) => {
+//   saveUser(user).then(() =>
+//     this.props.history.push('/restaurant-view')
+//   ))
+
+// const handleClick = () => {
+//   console.log("yay");
+//   // this.props.history.push("/restaurant-view");
+// };
+
+function handleClick() {
+  pathname:/restaurant-view;
+  state: {
+
+
+  }
+
+  // e.preventDefault();
+  // console.log("The link was clicked.");
+  this.props.history.push("/restaurant-view");
+}
+
 // Depending on the current path, this component sets the "active" class on the appropriate navigation link item
-function RestaurantCard({ restaurant }) {
-  console.log(restaurant);
+function RestaurantCard(props) {
+  console.log(props);
   return (
     <div class="col mb-4">
       <div className="card h-100">
@@ -12,23 +34,32 @@ function RestaurantCard({ restaurant }) {
           alt="..."
         />
         <div className="card-body">
-          <h5 className="card-title">{restaurant.name}</h5>
+          {/* <h5 className="card-title">{restaurant.name}</h5> */}
           <p className="card-text">Description?</p>
         </div>
         <ul className="list-group list-group-flush">
-          <li className="list-group-item">Type: {restaurant.category}</li>
-          <li className="list-group-item">To order: {restaurant.order}</li>
-          <li className="list-group-item">Menu: {restaurant.web_url}</li>
+          <li className="list-group-item">Type: {props.restaurant.category}</li>
+          <li className="list-group-item">
+            Order by: {props.restaurant.order}
+          </li>
+          <li className="list-group-item">Menu: {props.restaurant.web_url}</li>
         </ul>
         <div className="card-body">
           <a href="#" className="card-link">
-            menu: {restaurant.web_url}
+            menu:
           </a>
         </div>
         <div class="card-footer">
-          <a href="{restaurant.web_url}" className="btn btn-primary">
+          <button
+            href="/restaurant-view"
+            // onClick={this.handleClick}
+            onClick={handleClick}
+            className="btn btn-primary"
+          >
             View Restaurant Details
-          </a>
+          </button>
+
+          {/* How direct to RestaurantView card?  */}
         </div>
       </div>
     </div>
