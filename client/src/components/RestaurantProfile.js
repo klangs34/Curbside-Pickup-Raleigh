@@ -3,6 +3,9 @@ import Hours from "./Hours";
 import API from "../utils/API";
 import { Link } from "react-router-dom";
 
+// const handleRedirect() => {
+//   props.history.push("/");
+// }
 
 const RestaurantProfile = ({ isLogged }) => {
   const [name, setName] = useState("");
@@ -21,26 +24,28 @@ const RestaurantProfile = ({ isLogged }) => {
     menu_url: "",
   });
 
-  const [hours, setHours] = useState([{
-    days: "daily",
-    open: 8,
-    close: 22
-  }]);
+  const [hours, setHours] = useState([
+    {
+      days: "daily",
+      open: 8,
+      close: 22,
+    },
+  ]);
 
-  const handleContactInputChange = e => {
+  const handleContactInputChange = (e) => {
     const { id, value } = e.target;
     console.log(contact);
 
     setContact({ ...contact, [id]: value });
-  }
+  };
 
-  const handleNameInputChange = e => {
+  const handleNameInputChange = (e) => {
     const { value } = e.target;
 
     console.log(name);
 
     setName(value);
-  }
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -52,7 +57,7 @@ const RestaurantProfile = ({ isLogged }) => {
         contact: {
           lat: data.data.results[0].geometry.location.lat,
           lng: data.data.results[0].geometry.location.lng,
-          ...contact
+          ...contact,
         },
         hours: hours,
         order: order,
@@ -70,9 +75,7 @@ const RestaurantProfile = ({ isLogged }) => {
       {isLogged ? (
         <form onSubmit={handleSubmit}>
           <div className="form-group name">
-            <label htmlFor="name">
-              Restaurant Name
-            </label>
+            <label htmlFor="name">Restaurant Name</label>
             <input
               type="text"
               className="form-control"
@@ -85,9 +88,7 @@ const RestaurantProfile = ({ isLogged }) => {
           {/* fix formatting and classNames later  */}
           {/* street, city, zip, (plug in to convert to lat and lon in db)  */}
           <div className="form-group contact">
-            <label htmlFor="street">
-              Contact Information
-            </label>
+            <label htmlFor="street">Contact Information</label>
             <input
               type="text"
               className="form-control"
@@ -160,20 +161,32 @@ const RestaurantProfile = ({ isLogged }) => {
           {/* add loop or checkbox to add another Hours if needed */}
           <Hours />
           <div className="form-group category">
-            <label htmlFor="category">
-              What does your restaurant offer?
-            </label>
-            <select className="form-control" id="category" value={category} onChange={e => { console.log(category); setCategory(e.target.value) }} >
+            <label htmlFor="category">What does your restaurant offer?</label>
+            <select
+              className="form-control"
+              id="category"
+              value={category}
+              onChange={(e) => {
+                console.log(category);
+                setCategory(e.target.value);
+              }}
+            >
               <option>Food</option>
               <option>Food and Alcohol</option>
               <option>Alcohol</option>
             </select>
           </div>
           <div className="form-group order-option">
-            <label htmlFor="order">
-              Best way for people to order
-            </label>
-            <select className="form-control" id="order" value={order} onChange={e => { console.log(order); setOrder(e.target.value) }} >
+            <label htmlFor="order">Best way for people to order</label>
+            <select
+              className="form-control"
+              id="order"
+              value={order}
+              onChange={(e) => {
+                console.log(order);
+                setOrder(e.target.value);
+              }}
+            >
               <option>Phone</option>
               <option>Online</option>
             </select>
@@ -189,13 +202,20 @@ const RestaurantProfile = ({ isLogged }) => {
               placeholder="Menu url"
             />
           </div>
-          <button className="btn btn-success" type="submit">Submit</button>
+          <button className="btn btn-success" type="submit">
+            Submit
+          </button>
         </form>
       ) : (
-          <p> You have been logged out</p>
-          // not sure what to do here, need to show anything?
-          // <Link to="/sign-in">Login</Link>
-        )}
+        <p>test</p>
+        //hook called redirect
+        // { handleRedirect }
+        // = (props) => {
+        //   localStorage.setItem("jwtToken", "");
+        //   setIsLoggedToFalse();
+        //   props.history.push("/");
+        // };
+      )}
     </div>
   );
 };
