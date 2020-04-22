@@ -179,7 +179,7 @@ const RestaurantProfile = ({ isLogged }) => {
             </select>
           </div>
           <div className="form-group menu">
-            <label htmlFor="examphtmlFeFormControlInput1">Menu Location</label>
+            <label htmlFor="menu_url">Menu Location</label>
             <input
               type="text"
               className="form-control"
@@ -192,9 +192,11 @@ const RestaurantProfile = ({ isLogged }) => {
           <button className="btn btn-success" type="submit">Submit</button>
         </form>
       ) : (
-          <p> You have been logged out</p>
-          // not sure what to do here, need to show anything?
-          // <Link to="/sign-in">Login</Link>
+          <div>
+            <p> You have been logged out</p>
+            // not sure what to do here, need to show anything?
+            <Link to="/sign-in">Login</Link>
+          </div>
         )}
     </div>
   );
