@@ -64,7 +64,7 @@ const RestaurantProfile = ({ isLogged }) => {
   //console.log(category);
 
   const handleOrderChange = (e) => {
-    console.log(e.target.value);
+    //console.log(e.target.value);
     setOrder(e.target.value);
   };
   //console.log(order);
@@ -221,7 +221,7 @@ const RestaurantProfile = ({ isLogged }) => {
             </select>
           </div>
           <div className="form-group menu">
-            <label htmlFor="examphtmlFeFormControlInput1">Menu Location</label>
+            <label htmlFor="menu_url">Menu Location</label>
             <input
               type="text"
               className="form-control"

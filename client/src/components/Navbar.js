@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 
 function Navbar({ isLogged, setIsLoggedToFalse, ...props }) {
   console.log(props)
@@ -42,7 +42,8 @@ function Navbar({ isLogged, setIsLoggedToFalse, ...props }) {
       {!isLogged ? (
         <Link to="/sign-in">Sign In</Link>
       ) : (
-        <div onClick={handleLogout} className="btn btn-link">
+        // <div onClick={handleLogout} className="btn btn-link">
+        <div onClick={() => handleLogout()} className="btn btn-link">
           Logout
         </div>
       )}
@@ -55,4 +56,4 @@ function Navbar({ isLogged, setIsLoggedToFalse, ...props }) {
   );
 }
 
-export default Navbar;
+export default withRouter(Navbar);
