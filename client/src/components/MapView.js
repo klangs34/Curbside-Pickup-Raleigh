@@ -33,6 +33,8 @@ class MapView extends React.Component {
           icon={{
             url: "http://maps.google.com/mapfiles/ms/icons/blue-dot.png",
           }}
+          restaurant={{ name: "Your location" }}
+          onClick={this.onMarkerClick}
         />
         {this.props.restaurants.map((restaurant) => (
           <Marker
