@@ -11,8 +11,17 @@ Router.get("/get-restaurants", (req, res) => {
     res.json(data);
   });
 });
-Router.post("/restaurant/:id", (req, res) => {
-  db.Restaurants.insertMany(req.body).then((data) => {
+Router.post("/restaurant", (req, res) => {
+  db.Restaurants.create(req.body).then((data) => {
+    console.log(data);
+    res.json(data);
+  });
+});
+
+Router.put("/restaurant/:id", (req, res) => {
+  const id = req.params.id;
+  console.log(req.body)
+  db.Restaurants.findOneAndUpdate({ user: id }, req.body, {new: true}).then((data) => {
     console.log(data);
     res.json(data);
   });
@@ -21,7 +30,7 @@ Router.post("/restaurant/:id", (req, res) => {
 Router.get("/get-restaurant/:id", (req, res) => {
   const { id } = req.params;
 
-  db.Restaurants.findOne({ id }).then((data) => {
+  db.Restaurants.findOne({ user: id }).then((data) => {
     console.log(data);
     res.json(data);
   });

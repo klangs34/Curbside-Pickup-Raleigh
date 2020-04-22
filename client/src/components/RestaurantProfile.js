@@ -4,19 +4,24 @@ import API from "../utils/API";
 import { Link } from "react-router-dom";
 import axios from "axios";
 
-
 const RestaurantProfile = ({ isLogged }) => {
-
-  const [restarauntData, setRestarauntData] = useState("");
+  const [restaurantData, setRestarauntData] = useState("");
 
   useEffect(() => {
     const id = localStorage.getItem("id");
-    axios
-      .get(`/api/get-restaurant/${id}`)
-      .then((response) => setRestarauntData(response.data));
+    axios.get(`/api/get-restaurant/${id}`).then((response) => {
+      if (response.data) {
+        setRestarauntData(response.data);
+        setName(response.data.name);
+        setCategory(response.data.category);
+        setOrder(response.data.order);
+        setContact(response.data.contact);
+      }
+    });
   }, []);
 
-  console.log(restarauntData); 
+  console.log(restaurantData);
+
   const [name, setName] = useState("");
   const [category, setCategory] = useState("");
   const [order, setOrder] = useState("");
@@ -33,49 +38,71 @@ const RestaurantProfile = ({ isLogged }) => {
     menu_url: "",
   });
 
-  const [hours, setHours] = useState([{
-    days: "daily",
-    open: 8,
-    close: 22
-  }]);
+  const [hours, setHours] = useState([
+    {
+      days: "daily",
+      open: 8,
+      close: 22,
+    },
+  ]);
 
-  const handleContactInputChange = e => {
-    const { id, value } = e.target;
-    console.log(contact);
-
-    setContact({ ...contact, [id]: value });
-  }
-
-  const handleNameInputChange = e => {
+  const handleNameInputChange = (e) => {
     const { value } = e.target;
-
-    console.log(name);
-
     setName(value);
-  }
+  };
+  console.log(name);
+
+  const handleContactInputChange = (e) => {
+    const { id, value } = e.target;
+    setContact({ ...contact, [id]: value });
+  };
+  //console.log(contact);
+
+  const handleCategoryChange = (e) => {
+    console.log(e.target.value);
+    setCategory(e.target.value);
+  };
+  console.log(category);
+
+  const handleOrderChange = (e) => {
+    console.log(e.target.value);
+    setOrder(e.target.value);
+  };
+  console.log(order);
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    const place = `${contact.street}+${contact.city}+${contact.zip}`;
+    const place = `${contact.street} ${contact.city} ${contact.zip}`;
     API.findLocation(place).then((data) => {
+      const userId = localStorage.getItem("id");
+      console.log(userId, category, restaurantData.category);
       const restaurant = {
-        name: name,
+        user: userId,
+        name: name || restaurantData.name,
         contact: {
           lat: data.data.results[0].geometry.location.lat,
           lng: data.data.results[0].geometry.location.lng,
-          ...contact
+          ...contact,
         },
-        hours: hours,
-        order: order,
-        category: category,
+        hours: hours || restaurantData.hours,
+        order: order || restaurantData.order,
+        category: category || restaurantData.category,
       };
 
-      //get restaurant id
-      const id = localStorage.getItem("id"); 
-      API.saveRestaurant(restaurant, id).then((res) => {
-        res.json(restaurant);
-      });
+      console.log(restaurant);
+
+      if (restaurantData === null || restaurantData === "") {
+        //get restaurant id
+        API.saveRestaurant(restaurant).then((res) => {
+          console.log(res.data);
+        });
+      } else {
+        const id = localStorage.getItem("id");
+        API.updateRestaurant(restaurant, id).then((res) => {
+          console.log(res.data);
+        });
+      }
     });
   };
 
@@ -84,9 +111,7 @@ const RestaurantProfile = ({ isLogged }) => {
       {isLogged ? (
         <form onSubmit={handleSubmit}>
           <div className="form-group name">
-            <label htmlFor="name">
-              Restaurant Name
-            </label>
+            <label htmlFor="name">Restaurant Name</label>
             <input
               type="text"
               className="form-control"
@@ -99,9 +124,7 @@ const RestaurantProfile = ({ isLogged }) => {
           {/* fix formatting and classNames later  */}
           {/* street, city, zip, (plug in to convert to lat and lon in db)  */}
           <div className="form-group contact">
-            <label htmlFor="street">
-              Contact Information
-            </label>
+            <label htmlFor="street">Contact Information</label>
             <input
               type="text"
               className="form-control"
@@ -174,22 +197,28 @@ const RestaurantProfile = ({ isLogged }) => {
           {/* add loop or checkbox to add another Hours if needed */}
           <Hours />
           <div className="form-group category">
-            <label htmlFor="category">
-              What does your restaurant offer?
-            </label>
-            <select className="form-control" id="category" value={category} onChange={e => { console.log(category); setCategory(e.target.value) }} >
-              <option>Food</option>
-              <option>Food and Alcohol</option>
-              <option>Alcohol</option>
+            <label htmlFor="category">What does your restaurant offer?</label>
+            <select
+              className="form-control"
+              name="category"
+              value={category}
+              onChange={handleCategoryChange}
+            >
+              <option value="Food">Food</option>
+              <option value="Food and Alcohol">Food and Alcohol</option>
+              <option value="Alcohol">Alcohol</option>
             </select>
           </div>
           <div className="form-group order-option">
-            <label htmlFor="order">
-              Best way for people to order
-            </label>
-            <select className="form-control" id="order" value={order} onChange={e => { console.log(order); setOrder(e.target.value) }} >
-              <option>Phone</option>
-              <option>Online</option>
+            <label htmlFor="order">Best way for people to order</label>
+            <select
+              className="form-control"
+              id="order"
+              value={order}
+              onChange={handleOrderChange}
+            >
+              <option value="Phone">Phone</option>
+              <option value="Online">Online</option>
             </select>
           </div>
           <div className="form-group menu">
@@ -203,13 +232,15 @@ const RestaurantProfile = ({ isLogged }) => {
               placeholder="Menu url"
             />
           </div>
-          <button className="btn btn-success" type="submit">Submit</button>
+          <button className="btn btn-success" type="submit">
+            Submit
+          </button>
         </form>
       ) : (
-          <p> You have been logged out</p>
-          // not sure what to do here, need to show anything?
-          // <Link to="/sign-in">Login</Link>
-        )}
+        <p> You have been logged out</p>
+        // not sure what to do here, need to show anything?
+        // <Link to="/sign-in">Login</Link>
+      )}
     </div>
   );
 };
