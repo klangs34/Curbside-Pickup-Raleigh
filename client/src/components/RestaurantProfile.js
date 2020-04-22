@@ -1,8 +1,20 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Hours from "./Hours";
 import { Link } from "react-router-dom";
+import axios from "axios";
 
 const RestaurantProfile = ({ isLogged }) => {
+  const [restarauntData, setRestarauntData] = useState("");
+
+  useEffect(() => {
+    const id = localStorage.getItem("id");
+    axios
+      .get(`/api/get-restaurant/${id}`)
+      .then((response) => setRestarauntData(response.data));
+  }, []);
+
+  console.log(restarauntData);
+
   return (
     <div className="container">
       {isLogged ? (

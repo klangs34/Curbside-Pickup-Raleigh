@@ -11,7 +11,7 @@ Router.get("/get-restaurants", (req, res) => {
     res.json(data);
   });
 });
-Router.post("/restaurants", (req, res) => {
+Router.post("/restaurant/:id", (req, res) => {
   db.Restaurants.insertMany(req.body).then((data) => {
     console.log(data);
     res.json(data);
@@ -31,33 +31,33 @@ Router.post("/login", async (req, res, next) => {
   //add database logic
   try {
     let user = await db.Users.findOne({
-      email: req.body.email
+      email: req.body.email,
     });
     let { _id, email } = user;
     let isMatch = await user.comparePassword(req.body.password);
     if (isMatch) {
-      let token = jwt.sign({
-        _id,
-        email
-      },
+      let token = jwt.sign(
+        {
+          _id,
+          email,
+        },
         process.env.SECRET
       );
       return res.status(200).json({
         _id,
         email,
-        token
+        token,
       });
     } else {
       return next({
         status: 400,
-        message: "Invalid Email/Password!"
+        message: "Invalid Email/Password!",
       });
     }
-
   } catch (error) {
     return next({
       status: 400,
-      message: "Invalid Email/Password"
+      message: "Invalid Email/Password",
     });
   }
 });
@@ -67,16 +67,17 @@ Router.post("/createaccount", async (req, res, next) => {
   try {
     let user = await db.Users.create(req.body);
     let { _id, email } = user;
-    let token = jwt.sign({
-      _id,
-      email
-    },
+    let token = jwt.sign(
+      {
+        _id,
+        email,
+      },
       process.env.SECRET
     );
     return res.status(200).json({
       _id,
       email,
-      token
+      token,
     });
   } catch (error) {
     //if a validation fails!
@@ -85,8 +86,8 @@ Router.post("/createaccount", async (req, res, next) => {
     }
     return next({
       status: 400,
-      message: error.message
-    })
+      message: error.message,
+    });
   }
 });
 

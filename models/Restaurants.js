@@ -2,6 +2,9 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const RestaurantSchema = new Schema({
+  user: {
+    type: mongoose.Schema.Types.ObjectId, ref: "User"
+  },
   name: {
     type: String,
     unique: true,
