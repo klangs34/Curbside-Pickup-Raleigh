@@ -8,7 +8,7 @@ export default {
   getRestaurants: function () {
     return axios.get("/api/get-restaurants");
   },
-  saveRestaurant: function (restaurantData) {
-    return axios.post("/api/restaurant", restaurantData);
+  saveRestaurant: function (restaurantData, id) {
+    return axios.post(`/api/restaurant/${id}`, restaurantData);
   }
 }
