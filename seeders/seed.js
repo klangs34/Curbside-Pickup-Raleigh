@@ -1,10 +1,13 @@
 let mongoose = require("mongoose");
 let db = require("../models");
-mongoose.connect("mongodb://localhost/curbside_restaurantsdb", {
-  //must be the same as in the server fie
-  useNewUrlParser: true,
-  useFindAndModify: false,
-});
+mongoose.connect(
+  process.env.MONGODB_URI || "mongodb://localhost/curbside_restaurantsdb",
+  {
+    //must be the same as in the server fie
+    useNewUrlParser: true,
+    useFindAndModify: false,
+  }
+);
 let restaurantSeed = [
   {
     name: "Vidrio",
