@@ -50,10 +50,10 @@ const RestaurantSchema = new Schema({
         //option to put in a checkbox? like M-F, S, S, etc?
       },
       open: {
-        type: Number,
+        type: String,
       },
       close: {
-        type: Number,
+        type: String,
       },
     },
     {
@@ -61,10 +61,10 @@ const RestaurantSchema = new Schema({
         type: String,
       },
       open: {
-        type: Number,
+        type: String,
       },
       close: {
-        type: Number,
+        type: String,
       },
     },
     {
@@ -72,10 +72,10 @@ const RestaurantSchema = new Schema({
         type: String,
       },
       open: {
-        type: Number,
+        type: String,
       },
       close: {
-        type: Number,
+        type: String,
       },
     }
   ],
