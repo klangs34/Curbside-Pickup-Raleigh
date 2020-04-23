@@ -14,6 +14,7 @@ const SignIn = ({ setIsLoggedToTrue, ...props }) => {
       .post("/api/login", { email, password })
       .then((data) => {
         localStorage.setItem("jwtToken", data.data.token);
+        localStorage.setItem("id", data.data._id);
         setIsLoggedToTrue();
         props.history.push("/restaurant-profile")
       })

@@ -2,10 +2,11 @@ import React from "react";
 import { Link, withRouter } from "react-router-dom";
 
 function Navbar({ isLogged, setIsLoggedToFalse, ...props }) {
-  const handleLogout = (props) => {
+  console.log(props)
+  const handleLogout = () => {
     localStorage.setItem("jwtToken", "");
     setIsLoggedToFalse();
-    props.history.push("/");
+    props.history.push('/');
   };
 
   return (

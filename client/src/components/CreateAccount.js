@@ -13,8 +13,9 @@ const CreateAccount = ({ setIsLoggedToTrue, ...props }) => {
       .post("/api/createaccount", { email, password })
       .then((data) => {
         localStorage.setItem("jwtToken", data.data.token);
+        localStorage.setItem("id", data.data._id);
         setIsLoggedToTrue();
-        props.history.push("/restaurant-profile")
+        props.history.push("/restaurant-profile");
       })
       .catch((err) => {
         console.log(err.response.data.error.message);

@@ -7,11 +7,11 @@ import CreateAccount from "./components/CreateAccount";
 import Signin from "./components/SignIn";
 import RestaurantProfile from "./components/RestaurantProfile";
 import RestaurantView from "./components/RestaurantView";
-import FooterSpacer from "./components/FooterSpacer";
+import FooterSpacer from './components/FooterSpacer';
+import { withRouter } from 'react-router-dom';
 
-function App() {
+function App(props) {
   const [isLogged, setIsLogged] = useState(false);
-
   const setIsLoggedToTrue = () => {
     setIsLogged(true);
   };
@@ -24,7 +24,7 @@ function App() {
 
   return (
     <div>
-      <Navbar isLogged={isLogged} setIsLoggedToFalse={setIsLoggedToFalse} />
+      <Navbar isLogged={isLogged} setIsLoggedToFalse={setIsLoggedToFalse} {...props} />
       <FooterSpacer />
       <Switch>
         <Route
@@ -65,4 +65,4 @@ function App() {
   );
 }
 
-export default App;
+export default withRouter(App);
