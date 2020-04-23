@@ -66,8 +66,14 @@ const RestaurantProfile = ({ isLogged }) => {
   const handleOrderChange = (e) => {
     //console.log(e.target.value);
     setOrder(e.target.value);
+    //pulls a value
   };
-  //console.log(order);
+
+  // const [hourChoices, setHourChoices] = useState();
+  // console.log(hourChoices);
+  // defaults to false
+
+  // setHourChoices;
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -195,6 +201,12 @@ const RestaurantProfile = ({ isLogged }) => {
           <label htmlFor="examphtmlFeFormControlInput1">Hours</label>
           {/* add loop or checkbox to add another Hours if needed */}
           <Hours />
+          <button
+          // onClick={setHourChoices(true)}
+          // set to true, if true render another Hours component
+          >
+            Add more Hours
+          </button>
           <div className="form-group category">
             <label htmlFor="category">What does your restaurant offer?</label>
             <select

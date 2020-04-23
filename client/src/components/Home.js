@@ -11,6 +11,7 @@ class Home extends React.Component {
     lat: 35.7796,
     lng: -78.6382,
     restaurants: [],
+    filter: "",
   };
 
   //need a search function for data entered into the form field
@@ -26,7 +27,6 @@ class Home extends React.Component {
 
   handleFormSubmit = (event) => {
     event.preventDefault();
-    // this.searchGiphy(this.state.search);
     API.findLocation(this.state.search)
       .then((data) => {
         this.setState({
@@ -41,6 +41,15 @@ class Home extends React.Component {
       })
       .catch((err) => console.log(err));
   };
+
+  // handleFilter = () => {
+  //   const value = target.value;
+  //   this.setState({
+  //     [filter]: value,
+  //   });
+  //   console.log("Successfilter");
+  //   console.log(this.state);
+  // };
 
   componentDidMount = () => {
     if (navigator.geolocation) {
@@ -107,12 +116,14 @@ class Home extends React.Component {
     return (theta * Math.PI) / 180;
   };
 
+  // create a function, pass to filter.js, trigger function with onClick, test with console.log the selection, then use the argument to filter through the restaurants and save new array to state, inside return method reference new state of filtered restaurants
+
   render() {
     console.log(this.props);
     return (
       <div className="container">
         {/* jumbotron  */}
-        <div className="jumbotron jumbotron-fluid bg-info">
+        <div className="jumbotron jumbotron-fluid bg-secondary">
           <div className="container">
             <h1 className="display-4 text-center">
               Restaurant Pick-up Raleigh
@@ -137,7 +148,11 @@ class Home extends React.Component {
           {/* map  */}
           <div className="card-body">
             <div>
-              <Filter />
+              <Filter
+                filter={this.state.filter}
+                //  getFilter={this.getFilter}
+                handleFilter={this.handleFilter}
+              />
             </div>
             <div
               id="map-container-google"
@@ -155,7 +170,7 @@ class Home extends React.Component {
         {/* restaurant cards  */}
         <div className="row">
           {/* <div className="col-sm-6"> */}
-          <div class="row row-cols-md-1 row-cols-md-2 row-cols-md-3 row-cols-md-4 card-deck">
+          <div className="row row-cols-md-1 row-cols-md-2 row-cols-md-3 row-cols-md-4 card-deck">
             {this.state.restaurants.slice(0, 4).map((restaurant) => (
               <RestaurantCard
                 // these are the props

@@ -1,57 +1,72 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link, withRouter } from "react-router-dom";
+import logo from "../pages/logo.jpg"; // How get image to load
 
 function Navbar({ isLogged, setIsLoggedToFalse, ...props }) {
-  console.log(props)
+  console.log(props);
   const handleLogout = () => {
     localStorage.setItem("jwtToken", "");
     setIsLoggedToFalse();
-    props.history.push('/');
+    props.history.push("/");
   };
 
-  return (
-    <nav className="navbar">
-      <Link to="/">Home</Link>
-      {/* <div class="collapse navbar-collapse" id="navbarNavDropdown">
-        <ul class="navbar-nav">
-          <li class="nav-item dropdown">
-            <a
-              class="nav-link dropdown-toggle"
-              href="#"
-              id="navbarDropdownMenuLink"
-              data-toggle="dropdown"
-              aria-haspopup="true"
-              aria-expanded="false"
-            >
-              Restaurants
-            </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-              <a class="dropdown-item" href="#">
-                Login
-              </a>
-              <a class="dropdown-item" href="#">
-                Create Account
-              </a>
-            </div>
-          </li>
-        </ul>
-      </div> */}
+  const toggleOpen = () => setDropDown(!dropDown);
 
-      <Link to="/restaurants">Restaurants</Link>
-      {!isLogged && <Link to="/create-account">Create Account</Link>}
-      {!isLogged ? (
-        <Link to="/sign-in">Sign In</Link>
-      ) : (
-        // <div onClick={handleLogout} className="btn btn-link">
-        <div onClick={() => handleLogout()} className="btn btn-link">
-          Logout
-        </div>
-      )}
-      {isLogged && (
-        <Link to="/restaurant-profile" className="nav-item">
-          Restaurant Profile
+  const [dropDown, setDropDown] = useState(false);
+  const menuClass = `dropdown-menu${dropDown ? " show" : ""}`;
+  return (
+    <nav className="navbar d-flex align-items-stretch justify-content-between bg-info">
+      <div className="logo text-white align-middle d-flex justify-content-start">
+        <img
+          alt=""
+          src={logo}
+          style={({ width: "30px" }, { height: "30px" })}
+          className="d-inline-block align-middle"
+        />{" "}
+        <div className="p-2">Restaurant Pick-up</div>
+      </div>
+
+      <div className="home text-white p-2">
+        <Link to="/" className="text-white align-middle">
+          Home
         </Link>
-      )}
+      </div>
+
+      <div className="forRestaurant nav-item dropdown" onClick={toggleOpen}>
+        <a
+          className="nav-link dropdown-toggle text-white align-middle"
+          href="#"
+          id="dropdown"
+          role="button"
+          data-toggle="dropdown"
+          aria-haspopup="true"
+          aria-expanded={dropDown}
+        >
+          Update Restaurant Information
+        </a>
+        <div className={menuClass} aria-labelledby="dropdown">
+          {!isLogged && (
+            <Link to="/create-account" className="dropdown-item">
+              Create Account
+            </Link>
+          )}
+          {!isLogged ? (
+            <Link to="/sign-in" className="dropdown-item">
+              Sign In
+            </Link>
+          ) : (
+            // <div onClick={handleLogout} className="btn btn-link">
+            <div onClick={() => handleLogout()} className="btn btn-link">
+              Logout
+            </div>
+          )}
+          {isLogged && (
+            <Link to="/restaurant-profile" className="dropdown-item">
+              Restaurant Profile
+            </Link>
+          )}
+        </div>
+      </div>
     </nav>
   );
 }
