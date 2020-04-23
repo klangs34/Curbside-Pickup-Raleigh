@@ -2,7 +2,7 @@ import React from "react";
 import MapView from "./MapView";
 
 const RestaurantView = ({ restaurant }) => {
-  console.log(restaurant.lat);
+  console.log(restaurant);
   return (
     <div>
       {restaurant ? (
@@ -25,31 +25,98 @@ const RestaurantView = ({ restaurant }) => {
             </div>
           </div>
           <div className="card-body">
-            <h5 className="card-title">{restaurant.name}</h5>
+            <h2 className="card-title">{restaurant.name}</h2>
           </div>
           <ul className="list-group list-group-flush">
             <li className="list-group-item">
-              Type:
-              {restaurant.category}
+              Website:{" "}
+              <a
+                href={restaurant.contact.web_url}
+                target="_blank"
+                className="card-link"
+              >
+                {restaurant.contact.web_url}
+              </a>
+            </li>
+            <li className="list-group-item">Type: {restaurant.category}</li>
+            <li className="list-group-item">
+              How to Order:{" "}
+              {restaurant.order === "Phone" ? (
+                <p>By Phone @ {restaurant.contact.phone}</p>
+              ) : (
+                <a
+                  href={restaurant.contact.online}
+                  target="_blank"
+                  className="card-link"
+                >
+                  {restaurant.order}
+                </a>
+              )}
             </li>
             <li className="list-group-item">
-              Order by:
-              {restaurant.order}
+              {restaurant.contact.instagram ? (
+                <div>
+                  Menu updates on Instagram:{" "}
+                  <a
+                    href={restaurant.contact.instagram}
+                    target="_blank"
+                    className="card-link"
+                  >
+                    https://www.instagram.com/{restaurant.contact.instagram} "
+                  </a>
+                </div>
+              ) : (
+                <div>
+                  Menu Online:{" "}
+                  <a
+                    href={restaurant.contact.menu_url}
+                    target="_blank"
+                    className="card-link"
+                  >
+                    {restaurant.contact.menu_url}
+                  </a>
+                </div>
+              )}
             </li>
             <li className="list-group-item">
-              Menu: {restaurant.contact.web_url}
+              Current Hours:
+              {restaurant.hours.map(
+                (hour) => (
+                  console.log(hour),
+                  (
+                    <p>
+                      {hour.days}: {hour.open} to {hour.close}
+                    </p>
+                  )
+                )
+              )}
             </li>
-            <li>Hours</li>
           </ul>
-          <div className="card-body">
-            <a
-              href={restaurant.contact.web_url}
-              target="_blank"
-              className="card-link"
-            >
-              menu:
-            </a>
-          </div>
+          {/* <div className="card-body">
+            {restaurant.contact.instagram ? (
+              <div>
+                Menu updates on Instagram:{" "}
+                <a
+                  href={restaurant.contact.instagram}
+                  target="_blank"
+                  className="card-link"
+                >
+                  https://www.instagram.com/{restaurant.contact.instagram} "
+                </a>
+              </div>
+            ) : (
+              <div>
+                Menu Online:{" "}
+                <a
+                  href={restaurant.contact.menu_url}
+                  target="_blank"
+                  className="card-link"
+                >
+                  {restaurant.contact.menu_url}
+                </a>
+              </div>
+            )}
+          </div> */}
         </div>
       ) : (
         <div>Loading....</div>

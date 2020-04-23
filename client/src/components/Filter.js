@@ -3,6 +3,7 @@ import React from "react";
 class Filter extends React.Component {
   state = {
     isOpen: false,
+    filter: "",
   };
 
   toggleOpen = () => this.setState({ isOpen: !this.state.isOpen });
@@ -19,17 +20,33 @@ class Filter extends React.Component {
           aria-haspopup="true"
           aria-expanded="false"
         >
-          Filter for type
+          Filter for category
         </button>
         <div className={menuClass} aria-labelledby="dropdownMenuButton">
-          <a className="dropdown-item" href="#">
+          <a
+            // onCLick={handleFilter}
+            // value={props.search} need it to get this.props
+            name="filter"
+            className="dropdown-item"
+            href="#"
+          >
             Food
           </a>
-          <a className="dropdown-item" href="#">
+          <a
+            // onCLick={handleFilter}
+            // value={props.search}
+            name="filter"
+            className="dropdown-item"
+            href="#"
+          >
             Alcohol
           </a>
-          <a className="dropdown-item" href="#">
-            Food and alcohol
+          <a
+            name="filter"
+            className="dropdown-item"
+            href="#"
+          >
+            Food and Alcohol
           </a>
         </div>
       </div>
