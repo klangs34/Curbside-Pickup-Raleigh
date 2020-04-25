@@ -4,7 +4,7 @@ import MapView from "./MapView";
 const RestaurantView = ({ restaurant }) => {
   console.log(restaurant);
   return (
-    <div>
+    <main>
       {restaurant ? (
         <div>
           <div className="card m-2"></div>
@@ -121,7 +121,7 @@ const RestaurantView = ({ restaurant }) => {
       ) : (
         <div>Loading....</div>
       )}
-    </div>
+    </main>
   );
 };
 
