@@ -121,7 +121,7 @@ class Home extends React.Component {
   render() {
     console.log(this.props);
     return (
-      <div className="container">
+      <main className="container">
         {/* jumbotron  */}
         <div className="jumbotron jumbotron-fluid bg-secondary">
           <div className="container">
@@ -181,7 +181,7 @@ class Home extends React.Component {
             ))}
           </div>
         </div>
-      </div>
+      </main>
     );
   }
 }

@@ -7,8 +7,9 @@ import CreateAccount from "./components/CreateAccount";
 import Signin from "./components/SignIn";
 import RestaurantProfile from "./components/RestaurantProfile";
 import RestaurantView from "./components/RestaurantView";
-import FooterSpacer from './components/FooterSpacer';
-import { withRouter } from 'react-router-dom';
+import FooterSpacer from "./components/FooterSpacer";
+import { withRouter } from "react-router-dom";
+import "./App.css";
 
 function App(props) {
   const [isLogged, setIsLogged] = useState(false);
@@ -23,8 +24,12 @@ function App(props) {
   const [restaurant, setRestaurant] = useState(null);
 
   return (
-    <div>
-      <Navbar isLogged={isLogged} setIsLoggedToFalse={setIsLoggedToFalse} {...props} />
+    <div className="content">
+      <Navbar
+        isLogged={isLogged}
+        setIsLoggedToFalse={setIsLoggedToFalse}
+        {...props}
+      />
       <FooterSpacer />
       <Switch>
         <Route

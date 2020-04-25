@@ -24,8 +24,8 @@ const CreateAccount = ({ setIsLoggedToTrue, ...props }) => {
   };
 
   return (
-    <div className="container">
-      <form>
+    <main className="container">
+      <form className="mt-5">
         {displayError && (
           <div className="alert alert-danger" role="alert">
             {displayError}
@@ -60,7 +60,7 @@ const CreateAccount = ({ setIsLoggedToTrue, ...props }) => {
           Create account
         </button>
       </form>
-    </div>
+    </main>
   );
 };
 

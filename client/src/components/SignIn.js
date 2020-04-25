@@ -9,14 +9,14 @@ const SignIn = ({ setIsLoggedToTrue, ...props }) => {
   const handleSignin = (e) => {
     e.preventDefault();
     setDisplayError("");
-    
+
     axios
       .post("/api/login", { email, password })
       .then((data) => {
         localStorage.setItem("jwtToken", data.data.token);
         localStorage.setItem("id", data.data._id);
         setIsLoggedToTrue();
-        props.history.push("/restaurant-profile")
+        props.history.push("/restaurant-profile");
       })
       .catch((err) => {
         console.log(err);
@@ -25,13 +25,13 @@ const SignIn = ({ setIsLoggedToTrue, ...props }) => {
   };
 
   return (
-    <div className="container">
+    <main className="container">
       {displayError && (
         <div className="alert alert-danger" role="alert">
           {displayError}
         </div>
       )}
-      <form>
+      <form className="mt-5">
         <div className="form-group">
           <label htmlFor="exampleInputEmail1">Email Address</label>
           <input
@@ -61,7 +61,7 @@ const SignIn = ({ setIsLoggedToTrue, ...props }) => {
           Sign in
         </button>
       </form>
-    </div>
+    </main>
   );
 };
 
