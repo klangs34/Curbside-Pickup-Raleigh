@@ -12,5 +12,4 @@ https://restaurant-pickup-raleigh.herokuapp.com/
 ![Raleigh-Curbside-Pickup app](Raleigh-Curbside-Pickup.gif)
 
 ## Installation options
-1. Fork the respository
-1. Use git clone from the CLI to clone the remote repository
+1. Download repository or use git clone from the CLI to clone the remote repository
